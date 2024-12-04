@@ -1,32 +1,228 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EnglandGlasses - Homepage</title>
-    <link rel="stylesheet" href="css/styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EnglandGlasses</title>
+
+  <!-- Bootstrap CSS for layout and styling -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    /* Body and general layout */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 0;
+    }
+
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 250px;
+      height: 100%;
+      background-color: #343a40;
+      padding-top: 20px;
+      color: white;
+    }
+
+    .sidebar a {
+      display: block;
+      color: white;
+      padding: 10px;
+      text-decoration: none;
+      margin-bottom: 10px;
+      font-size: 18px;
+    }
+
+    .sidebar a:hover {
+      background-color: #495057;
+    }
+
+    .main-content {
+      margin-left: 250px;
+      padding: 20px;
+    }
+
+    header {
+      background-color: #007bff;
+      color: white;
+      padding: 40px 20px;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 36px;
+    }
+
+    header p {
+      font-size: 18px;
+    }
+
+    .hero-section {
+      background-color: #28a745;
+      color: white;
+      text-align: center;
+      padding: 80px 20px;
+    }
+
+    .hero-section h2 {
+      font-size: 36px;
+    }
+
+    .hero-section p {
+      font-size: 18px;
+    }
+
+    .hero-section a {
+      font-size: 18px;
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+
+    .hero-section a:hover {
+      background-color: #0056b3;
+    }
+
+    .container {
+      margin-top: 30px;
+    }
+
+    .card {
+      border: none;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .card img {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    .card-body {
+      text-align: center;
+      padding: 20px;
+    }
+
+    .card-title {
+      font-size: 24px;
+    }
+
+    .card-text {
+      font-size: 18px;
+      color: #333;
+    }
+
+    .card .btn {
+      background-color: #007bff;
+      color: white;
+      font-size: 16px;
+      padding: 10px 20px;
+      border-radius: 5px;
+      border: none;
+    }
+
+    .card .btn:hover {
+      background-color: #0056b3;
+    }
+
+    footer {
+      background-color: #343a40;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 50px;
+    }
+
+    footer p {
+      margin: 0;
+    }
+
+    .text-center {
+      text-align: center;
+    }
+
+  </style>
+
 </head>
+
 <body>
+
+  <!-- Side Nav -->
+  <nav class="sidebar">
+    <ul class="list-unstyled">
+      <li><a href="frames.html">Frames</a></li>
+      <li><a href="sunglasses.html">Sunglasses</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="main-content">
     <header>
-        <h1>Welcome to EnglandGlasses</h1>
-        <nav>
-            <ul>
-                <li><a href="frames.html">Frames</a></li>
-                <li><a href="sunglasses.html">Sunglasses</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="cart/cart.html">Cart</a></li>
-            </ul>
-        </nav>
+      <h1>EnglandGlasses</h1>
+      <p>Find Your Perfect Fit</p>
     </header>
-    <main>
-        <section>
-            <h2>Shop the Latest Frames and Sunglasses</h2>
-            <p>Explore our collection of stylish eyewear!</p>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2024 EnglandGlasses</p>
-    </footer>
-    <script src="js/script.js"></script>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <h2>Discover Stunning Frames & Sunglasses</h2>
+      <p>Stylish eyewear for every occasion</p>
+      <a href="frames.html">Shop Frames</a>
+    </section>
+
+    <!-- Featured Frames Section -->
+    <section id="frames" class="container">
+      <h3 class="text-center mb-4">Featured Frames</h3>
+      <div class="row">
+        <div class="col-md-4 mb-4">
+          <div class="card">
+            <img src="images/frames/frame1.jpg" class="card-img-top" alt="Stylish Frame">
+            <div class="card-body">
+              <h5 class="card-title">Stylish Frame</h5>
+              <p class="card-text">$120</p>
+              <a href="frames.html" class="btn">Select</a>
+            </div>
+          </div>
+        </div>
+        <!-- More frames can be added here -->
+      </div>
+    </section>
+
+    <!-- Featured Sunglasses Section -->
+    <section id="sunglasses" class="container py-5 bg-light">
+      <h3 class="text-center mb-4">Featured Sunglasses</h3>
+      <div class="row">
+        <div class="col-md-4 mb-4">
+          <div class="card">
+            <img src="images/sunglasses/sunglasses1.jpg" class="card-img-top" alt="Cool Sunglasses">
+            <div class="card-body">
+              <h5 class="card-title">Cool Sunglasses</h5>
+              <p class="card-text">$140</p>
+              <a href="sunglasses.html" class="btn">Select</a>
+            </div>
+          </div>
+        </div>
+        <!-- More sunglasses can be added here -->
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2024 EnglandGlasses. All Rights Reserved.</p>
+  </footer>
+
+  <!-- Bootstrap and custom JavaScript -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
+
 </html>
