@@ -4,7 +4,7 @@ const frames = [
     price: '$120',
     colors: [
       { color: 'Black', src: 'images/glasses/A5.0/A5.0 Black.jpg' },
-      { color: 'A5.0 Burnt Orange', src: 'images/glasses/A5.0/A5.0 Burnt Orange.jpg' }
+      { color: 'Burnt Orange', src: 'images/glasses/A5.0/A5.0 Burnt Orange.jpg' }
     ],
     link: 'frame-details.html?frame=1'
   },
@@ -12,8 +12,8 @@ const frames = [
     title: 'Stylish Frame 2',
     price: '$130',
     colors: [
-      { color: 'Black', src: 'images/frames/frame2_black.jpg' },
-      { color: 'Brown', src: 'images/frames/frame2_brown.jpg' }
+      { color: 'Black', src: 'images/glasses/A5.0/A5.1 Black.jpg' },
+      { color: 'Brown', src: 'images/glasses/A5.0/A5.1 Tortoise.jpg' }
     ],
     link: 'frame-details.html?frame=2'
   },
@@ -21,8 +21,8 @@ const frames = [
     title: 'Stylish Frame 3',
     price: '$140',
     colors: [
-      { color: 'Black', src: 'images/frames/frame3_black.jpg' },
-      { color: 'Gray', src: 'images/frames/frame3_gray.jpg' }
+      { color: 'Black', src: 'images/glasses/A5.0/A5.2 Black & Red.jpg' },
+      { color: 'Gray', src: 'images/glasses/A5.0/.jpg' }
     ],
     link: 'frame-details.html?frame=3'
   },
@@ -30,8 +30,8 @@ const frames = [
     title: 'Stylish Frame 4',
     price: '$150',
     colors: [
-      { color: 'Black', src: 'images/frames/frame4_black.jpg' },
-      { color: 'Red', src: 'images/frames/frame4_red.jpg' }
+      { color: 'Black', src: 'images/glasses/A5.0/A5.3 Black.jpg' },
+      { color: 'Red', src: 'images/glasses/A5.0/A5.3 Blue.jpg' }
     ],
     link: 'frame-details.html?frame=4'
   },
@@ -39,8 +39,8 @@ const frames = [
     title: 'Stylish Frame 5',
     price: '$160',
     colors: [
-      { color: 'Black', src: 'images/frames/frame5_black.jpg' },
-      { color: 'Silver', src: 'images/frames/frame5_silver.jpg' }
+      { color: 'Black', src: 'images/glasses/A5.0/A5.4 Black.jpg' },
+      { color: 'Silver', src: 'images/glasses/A5.0/A5.4 Pink.jpg' }
     ],
     link: 'frame-details.html?frame=5'
   },
@@ -48,8 +48,9 @@ const frames = [
     title: 'Stylish Frame 6',
     price: '$170',
     colors: [
-      { color: 'Black', src: 'images/frames/frame6_black.jpg' },
-      { color: 'Gold', src: 'images/frames/frame6_gold.jpg' }
+      { color: 'Black', src: 'images/glasses/A5.0/A5.5 Black & Clear Gradient.jpg' },
+      { color: 'Gold', src: 'images/glasses/A5.0/A5.5 Blue & Clear Gradient.jpg' },
+      { color: 'Gold', src: 'images/glasses/A5.0/A5.5 Pink & Clear Gradient.jpg' }
     ],
     link: 'frame-details.html?frame=6'
   },
@@ -57,8 +58,11 @@ const frames = [
     title: 'Stylish Frame 7',
     price: '$180',
     colors: [
-      { color: 'Black', src: 'images/frames/frame7_black.jpg' },
-      { color: 'Blue', src: 'images/frames/frame7_blue.jpg' }
+      { color: 'Black', src: 'images/glasses/A5.0/A5.6 Black & Clear.jpg' },
+      { color: 'Blue', src: 'images/glasses/A5.0/A5.6 Blue & Clear.jpg' },
+      { color: 'Blue', src: 'images/glasses/A5.0/A5.6 Pink & Clear.jpg' },
+      { color: 'Blue', src: 'images/glasses/A5.0/A5.6 Tortoise.jpg' }
+      
     ],
     link: 'frame-details.html?frame=7'
   },
@@ -66,17 +70,21 @@ const frames = [
     title: 'Stylish Frame 8',
     price: '$190',
     colors: [
-      { color: 'Black', src: 'images/frames/frame8_black.jpg' },
-      { color: 'Pink', src: 'images/frames/frame8_pink.jpg' }
+      { color: 'Black', src: 'images/glasses/A5.0/A5.8 Black & Blue.jpg' },
+      { color: 'Pink', src: 'images/glasses/A5.0/A5.8 Black.jpg' },
+      { color: 'Blue', src: 'images/glasses/A5.0/A5.8 Clear.jpg' }
+
     ],
+
     link: 'frame-details.html?frame=8'
   },
   {
     title: 'Stylish Frame 9',
     price: '$200',
     colors: [
-      { color: 'Black', src: 'images/frames/frame9_black.jpg' },
-      { color: 'Yellow', src: 'images/frames/frame9_yellow.jpg' }
+      { color: 'Blue', src: 'images/glasses/A5.0/A5.9 Black.jpg' },
+      { color: 'Blue', src: 'images/glasses/A5.0/A5.9 Blue.jpg' },
+      { color: 'Blue', src: 'images/glasses/A5.0/A5.9 Clear.jpg' }
     ],
     link: 'frame-details.html?frame=9'
   },
@@ -84,8 +92,9 @@ const frames = [
     title: 'Stylish Frame 10',
     price: '$210',
     colors: [
-      { color: 'Black', src: 'images/frames/frame10_black.jpg' },
-      { color: 'Purple', src: 'images/frames/frame10_purple.jpg' }
+      { color: 'Blue', src: 'images/glasses/A5.0/A5.91 Black.jpg' },
+      { color: 'Blue', src: 'images/glasses/A5.0/A5.91 Blue.jpg' },
+      { color: 'Blue', src: 'images/glasses/A5.0/A5.91 Brown.jpg' }
     ],
     link: 'frame-details.html?frame=10'
   },
@@ -93,8 +102,8 @@ const frames = [
     title: 'Stylish Frame 11',
     price: '$220',
     colors: [
-      { color: 'Black', src: 'images/frames/frame11_black.jpg' },
-      { color: 'Green', src: 'images/frames/frame11_green.jpg' }
+      { color: 'Blue', src: 'images/glasses/A5.0/A5.92 Black & Brown.jpg' },
+      
     ],
     link: 'frame-details.html?frame=11'
   },
@@ -102,8 +111,9 @@ const frames = [
     title: 'Stylish Frame 12',
     price: '$230',
     colors: [
-      { color: 'Black', src: 'images/frames/frame12_black.jpg' },
-      { color: 'Red', src: 'images/frames/frame12_red.jpg' }
+      { color: 'Blue', src: 'images/glasses/A5.0/A5.93 Black & Clear.jpg' },
+      { color: 'Blue', src: 'images/glasses/A5.0/A5.93 Black & Pink.jpg' },
+      { color: 'Blue', src: 'images/glasses/A5.0/A5.93 Brown & Pink.jpg' }
     ],
     link: 'frame-details.html?frame=12'
   },
@@ -111,8 +121,9 @@ const frames = [
     title: 'Stylish Frame 13',
     price: '$240',
     colors: [
-      { color: 'Black', src: 'images/frames/frame13_black.jpg' },
-      { color: 'Orange', src: 'images/frames/frame13_orange.jpg' }
+      { color: 'Blue', src: 'images/glasses/A5.0/A5.94 Black & Brown.jpg' },
+      { color: 'Blue', src: 'images/glasses/A5.0/A5.94 Clear & Silver.jpg' },
+      { color: 'Blue', src: 'images/glasses/A5.0/A5.94 Clear.jpg' }
     ],
     link: 'frame-details.html?frame=13'
   },
@@ -120,8 +131,9 @@ const frames = [
     title: 'Stylish Frame 14',
     price: '$250',
     colors: [
-      { color: 'Black', src: 'images/frames/frame14_black.jpg' },
-      { color: 'Brown', src: 'images/frames/frame14_brown.jpg' }
+      { color: 'Blue', src: 'images/glasses/A5.0/A5.95 Black & Silver.jpg' },
+      { color: 'Blue', src: 'images/glasses/A5.0/A5.95 Black.jpg' },
+      { color: 'Blue', src: 'images/glasses/A5.0/A5.95 Clear.jpg' }
     ],
     link: 'frame-details.html?frame=14'
   },
@@ -129,7 +141,7 @@ const frames = [
     title: 'Stylish Frame 15',
     price: '$260',
     colors: [
-      { color: 'Black', src: 'images/frames/frame15_black.jpg' },
+      { color: 'Black', src: 'images/glasses/Academic/P2027 Black.jpg' },
       { color: 'Silver', src: 'images/frames/frame15_silver.jpg' }
     ],
     link: 'frame-details.html?frame=15'
@@ -138,7 +150,7 @@ const frames = [
     title: 'Stylish Frame 16',
     price: '$270',
     colors: [
-      { color: 'Black', src: 'images/frames/frame16_black.jpg' },
+      { color: 'Black', src: 'images/glasses/Academic/P2027 Red.jpg' },
       { color: 'Gold', src: 'images/frames/frame16_gold.jpg' }
     ],
     link: 'frame-details.html?frame=16'
@@ -147,7 +159,7 @@ const frames = [
     title: 'Stylish Frame 17',
     price: '$280',
     colors: [
-      { color: 'Black', src: 'images/frames/frame17_black.jpg' },
+      { color: 'Black', src: 'images/glasses/Academic/P2031 Black.jpg' },
       { color: 'Blue', src: 'images/frames/frame17_blue.jpg' }
     ],
     link: 'frame-details.html?frame=17'
@@ -156,7 +168,7 @@ const frames = [
     title: 'Stylish Frame 18',
     price: '$290',
     colors: [
-      { color: 'Black', src: 'images/frames/frame18_black.jpg' },
+      { color: 'Black', src: 'images/glasses/Academic/P2031 Grey.jpg' },
       { color: 'Purple', src: 'images/frames/frame18_purple.jpg' }
     ],
     link: 'frame-details.html?frame=18'
