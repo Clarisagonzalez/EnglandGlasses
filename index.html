@@ -8,14 +8,17 @@
 
   <!-- Bootstrap CSS for layout and styling -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
 
   <style>
     /* Body and general layout */
     body {
       font-family: Arial, sans-serif;
-      background-color: #f8f9fa;
+      background-color: #f8f8ff; /* Light color for background */
       margin: 0;
       padding: 0;
+      color: #253d58; /* Navy blue for text */
     }
 
     /* Sidebar Styles */
@@ -25,7 +28,7 @@
       left: 0;
       width: 250px;
       height: 100%;
-      background-color: #343a40;
+      background-color: #253d58; /* Navy blue for sidebar */
       padding-top: 20px;
       color: white;
       transition: transform 0.3s ease;
@@ -46,7 +49,7 @@
     }
 
     .sidebar a:hover {
-      background-color: #495057;
+      background-color: #c9a959; /* Accent gold color for hover effect */
     }
 
     .main-content {
@@ -63,7 +66,7 @@
       position: absolute;
       top: 20px;
       left: 20px;
-      background-color: #007bff;
+      background-color: #ac8181; /* Accent red for the toggle button */
       color: white;
       padding: 10px 20px;
       border: none;
@@ -72,13 +75,19 @@
     }
 
     .toggle-btn:hover {
-      background-color: #0056b3;
+      background-color: #cfceca; /* Light neutral color for hover */
     }
 
     header {
-      background-color: #007bff;
+      background-color: #253d58; /* Navy blue for header */
       color: white;
       padding: 40px 20px;
+      text-align: center;
+    }
+    header img {
+      max-width: 100%;
+      height: auto;
+      max-height: 200px; /* logo size  */
     }
 
     header h1 {
@@ -91,7 +100,7 @@
     }
 
     .hero-section {
-      background-color: #28a745;
+      background-color: #c9a959; /* Gold for the hero section */
       color: white;
       text-align: center;
       padding: 80px 20px;
@@ -108,14 +117,14 @@
     .hero-section a {
       font-size: 18px;
       padding: 10px 20px;
-      background-color: #007bff;
+      background-color: #253d58; /* Navy blue button */
       color: white;
       text-decoration: none;
       border-radius: 5px;
     }
 
     .hero-section a:hover {
-      background-color: #0056b3;
+      background-color: #ac8181; /* Accent red for hover */
     }
 
     .container {
@@ -147,7 +156,7 @@
     }
 
     .card .btn {
-      background-color: #007bff;
+      background-color: #253d58; /* Navy blue button */
       color: white;
       font-size: 16px;
       padding: 10px 20px;
@@ -156,11 +165,11 @@
     }
 
     .card .btn:hover {
-      background-color: #0056b3;
+      background-color: #ac8181; /* Accent red for hover */
     }
 
     footer {
-      background-color: #343a40;
+      background-color: #253d58; /* Navy blue for footer */
       color: white;
       text-align: center;
       padding: 20px;
@@ -195,6 +204,7 @@
   <!-- Main Content -->
   <div class="main-content" id="mainContent">
     <header>
+      <img src="images/logo.png" alt="EnglandGlasses Logo"> 
       <h1>EnglandGlasses</h1>
       <p>Find Your Perfect Fit</p>
     </header>
@@ -212,7 +222,7 @@
       <div class="row">
         <div class="col-md-4 mb-4">
           <div class="card">
-            <img src="images/frames/frame1.jpg" class="card-img-top" alt="Stylish Frame">
+            <img src="images/glasses/Academic/P2027 Black.jpg" class="card-img-top" alt="Stylish Frame">
             <div class="card-body">
               <h5 class="card-title">Stylish Frame</h5>
               <p class="card-text">$120</p>
@@ -220,7 +230,26 @@
             </div>
           </div>
         </div>
-        <!-- More frames can be added here -->
+        <div class="col-md-4 mb-4">
+          <div class="card">
+            <img src="images/glasses/Academic/P2028 Brown.jpg" class="card-img-top" alt="Classic Brown Frame">
+            <div class="card-body">
+              <h5 class="card-title">Classic Brown Frame</h5>
+              <p class="card-text">$130</p>
+              <a href="frames.html" class="btn">Select</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="card">
+            <img src="images/glasses/Academic/P2029 Gray.jpg" class="card-img-top" alt="Gray Frame">
+            <div class="card-body">
+              <h5 class="card-title">Gray Frame</h5>
+              <p class="card-text">$125</p>
+              <a href="frames.html" class="btn">Select</a>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -238,7 +267,26 @@
             </div>
           </div>
         </div>
-        <!-- More sunglasses can be added here -->
+        <div class="col-md-4 mb-4">
+          <div class="card">
+            <img src="images/sunglasses/sunglasses2.jpg" class="card-img-top" alt="Sporty Sunglasses">
+            <div class="card-body">
+              <h5 class="card-title">Sporty Sunglasses</h5>
+              <p class="card-text">$150</p>
+              <a href="sunglasses.html" class="btn">Select</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="card">
+            <img src="images/sunglasses/sunglasses3.jpg" class="card-img-top" alt="Retro Sunglasses">
+            <div class="card-body">
+              <h5 class="card-title">Retro Sunglasses</h5>
+              <p class="card-text">$160</p>
+              <a href="sunglasses.html" class="btn">Select</a>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 

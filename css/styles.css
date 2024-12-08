@@ -5,7 +5,9 @@
    Blue Gray Dark  #363d46
    Blue Gary Light #727880
 */
-
+* {
+  font-family: 'Poppins', sans-serif;
+}
 body {
     display: flex;
     margin: 0;
