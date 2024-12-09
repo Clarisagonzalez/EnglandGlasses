@@ -197,8 +197,7 @@
 
             <div class="col-md-4">
                 <h2>Our Contact Information</h2>
-                <p><strong>Email:</strong> <a href="mailto:email@example.com">email@example.com</a></p>
-                <p><strong>Phone:</strong> <a href="tel:1234567890">123-456-7890</a></p>
+                <p><strong>Email:</strong> <a href="mailto:englandglasses@gmail.com">englandglasses@gmail.com</a></p>
             </div>
         </div>
     </main>
@@ -211,13 +210,13 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <!-- Load Navbar Script -->
-    <script src="navbar.js"></script>
+   
     <!-- EmailJS SDK -->
-    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script src="js/email.min.js"></script>
+    <script type="module" src="https://cdn.emailjs.com/dist/email.min.js"></script>
     <script>
         (function() {
-            emailjs.init("nmDFBlLUuOkJyxGWt");
+            emailjs.init("N3gV60mxHgJhtuOS0");
         })();
     </script>
     <!-- Form Validation Script -->
@@ -263,7 +262,7 @@
                 document.getElementById('error-messages').innerHTML = '';
 
                 // Send the email using EmailJS
-                emailjs.send('service_placeholder', 'template_placeholder', {
+                emailjs.send('service_1iws5t6', 'template_07lvjs2', {
                     name: name,
                     email: email,
                     message: message
