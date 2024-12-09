@@ -5,10 +5,156 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact - EnglandGlasses</title>
     <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .contact-page {
+        display: flex;
+        flex-direction: column; /* Stack items vertically */
+        align-items: center; /* Center items horizontally */
+        justify-content: center; /* Center items vertically */
+        min-height: 100vh; /* Full viewport height */
+        padding: 20px; /* Add some padding for spacing */
+        background-color: #f0f0ea;
+        }
+
+        .contact-page header {
+        text-align: center;
+        margin-bottom: 20px;
+        }
+
+        .contact-page main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        max-width: 800px; /* Limit the width of the content */
+        background: #fff; /* Optional: Add a background color for contrast */
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-page .heading-with-images {
+        text-align: center;
+        }
+
+        .contact-page form {
+        width: 100%;
+        }
+
+        .contact-page .row {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 30px; /* Add spacing between columns */
+        }
+
+        .contact-page .col-md-8,
+        .contact-page .col-md-4 {
+        flex: 1 1 100%; /* Default to full-width on small screens */
+        max-width: 400px; /* Limit the column width on larger screens */
+        }
+
+        .contact-page footer {
+        margin-top: 20px;
+        text-align: center;
+        }
+
+        nav {
+        background-color: #060644; /* Navigation bar background */
+        color: #ceb290; /* Navigation bar font color */
+        position: fixed; /* Fix the nav bar to the side */
+        left: 0; /* Align to the left */
+        top: 0; /* Start at the top */
+        height: 100vh; /* Full viewport height */
+        width: 200px; /* Set width for the navigation bar */
+        display: flex;
+        flex-direction: column; /* Stack nav items vertically */
+        justify-content: flex-start; /* Align items at the top */
+        padding: 20px; /* Add some padding */
+        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Optional shadow for depth */
+        }
+
+        nav ul {
+        list-style-type: none; /* Remove bullets */
+        padding: 0;
+        margin: 0;
+        }
+
+        nav ul li {
+        margin: 15px 0; /* Add spacing between links */
+        }
+
+        nav ul li a {
+        color: #f0f0ea; /* Font color */
+        text-decoration: none; /* Remove underline */
+        font-weight: bold; /* Make links bold */
+        font-size: 16px;
+        transition: color 0.3s ease; /* Smooth color change on hover */
+        }
+
+        nav ul li a:hover {
+        color: #ccc; /* Change link color on hover */
+        }
+
+        body {
+        margin-left: 200px; /* Adjust body content to not overlap with nav */
+        }
+
+        .heading-with-images {
+        text-align: center; /* Center the image horizontally */
+        margin-bottom: 20px; /* Add space below the image */
+        }
+
+        .heading-with-images img {
+        max-width: 100%; /* Make the image responsive */
+        height: auto; /* Maintain aspect ratio */
+        margin: 0 auto; /* Center the image */
+        display: block; /* Ensure it's treated as a block-level element */
+        }
+
+        #contact-form {
+        margin-top: 20px; /* Add space above the form */
+        }
+        
+        #contact-form {
+        display: flex;
+        flex-direction: column; /* Stack form fields vertically */
+        align-items: flex-start; /* Align labels and inputs to the left */
+        gap: 15px; /* Add space between form fields */
+        width: 100%; /* Make the form responsive */
+        }
+
+        #contact-form .form-group {
+        width: 100%; /* Make each form group span the full width of the form */
+        display: flex;
+        flex-direction: column; /* Stack label and input/textarea */
+        }
+
+        #contact-form label {
+        margin-bottom: 5px; /* Add spacing between labels and input fields */
+        font-weight: bold; /* Make labels stand out */
+        }
+
+        #contact-form input,
+        #contact-form textarea {
+        width: 100%; /* Make all inputs and textarea the same width */
+        max-width: 500px; /* Limit width to a reasonable size */
+        padding: 10px; /* Add padding inside the fields for a cleaner look */
+        border: 1px solid #ccc; /* Add a border for visibility */
+        border-radius: 5px; /* Round the corners slightly */
+        font-size: 16px; /* Standardize font size */
+        }
+
+        #contact-form button {
+        align-self: flex-start; /* Align the button with the form fields */
+        padding: 10px 20px; /* Add padding to the button */
+        font-size: 16px; /* Match button font size with inputs */
+        }
+
+    </style>
 </head>
-<body>
+<body class="contact-page">
     <header>
-        <h1>Contact Us</h1>
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
@@ -18,17 +164,119 @@
             </ul>
         </nav>
     </header>
-    <main>
-        <section>
-            <h2>Get in Touch</h2>
-            <form>
-                <!-- Contact form elements here -->
-            </form>
-        </section>
+    <main class="container my-5">
+        <div class="text-center mb-4">
+            <div class="heading-with-images">
+                <img src="images/contact.png" alt="England Glasses" class="heading-image">
+                <p class="lead">Please fill out the form below and we will get in touch with you shortly.<br><small class="text-muted">* indicates a required field</small></p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8">
+                <form id="contact-form">
+                    <div class="form-group">
+                        <label for="name">Name: *</label>
+                        <input type="text" class="form-control" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email: *</label>
+                        <input type="email" class="form-control" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message: *</label>
+                        <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                    <div id="error-messages" class="mt-3"></div>
+                </form>
+                <div id="thank-you-message" class="alert alert-success mt-3" style="display:none;">
+                    Thank you, you will hear from us soon!
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <h2>Our Contact Information</h2>
+                <p><strong>Email:</strong> <a href="mailto:email@example.com">email@example.com</a></p>
+                <p><strong>Phone:</strong> <a href="tel:1234567890">123-456-7890</a></p>
+            </div>
+        </div>
     </main>
-    <footer>
-        <p>&copy; 2024 EnglandGlasses</p>
+
+    <footer class="bg-light text-center py-4">
+        <p>&copy; 2024 EnglandGlasses. All Rights Reserved.</p>
     </footer>
-    <script src="js/script.js"></script>
+    
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Load Navbar Script -->
+    <script src="navbar.js"></script>
+    <!-- EmailJS SDK -->
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script>
+        (function() {
+            emailjs.init("nmDFBlLUuOkJyxGWt");
+        })();
+    </script>
+    <!-- Form Validation Script -->
+    <script>
+        function validateEmail(email) {
+            var re = /\S+@\S+\.\S+/;
+            return re.test(email);
+        }
+
+        document.getElementById('contact-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            var name = document.getElementById('name').value;
+            var email = document.getElementById('email').value;
+            var message = document.getElementById('message').value;
+            var errorMessage = "";
+
+            if (name === "") {
+                errorMessage += "Name is required.<br>";
+                document.getElementById('name').classList.add('is-invalid');
+            } else {
+                document.getElementById('name').classList.remove('is-invalid');
+            }
+            if (email === "") {
+                errorMessage += "Email is required.<br>";
+                document.getElementById('email').classList.add('is-invalid');
+            } else if (!validateEmail(email)) {
+                errorMessage += "Please enter a valid email address.<br>";
+                document.getElementById('email').classList.add('is-invalid');
+            } else {
+                document.getElementById('email').classList.remove('is-invalid');
+            }
+            if (message === "") {
+                errorMessage += "Message is required.<br>";
+                document.getElementById('message').classList.add('is-invalid');
+            } else {
+                document.getElementById('message').classList.remove('is-invalid');
+            }
+
+            if (errorMessage !== "") {
+                document.getElementById('error-messages').innerHTML = '<div class="alert alert-danger">' + errorMessage + '</div>';
+            } else {
+                document.getElementById('error-messages').innerHTML = '';
+
+                // Send the email using EmailJS
+                emailjs.send('service_placeholder', 'template_placeholder', {
+                    name: name,
+                    email: email,
+                    message: message
+                }).then(function(response) {
+                    console.log('Email sent successfully:', response.status, response.text);
+                    document.getElementById('thank-you-message').style.display = 'block';
+                    document.getElementById('contact-form').reset();
+                }, function(error) {
+                    console.error('Failed to send email:', error);
+                    document.getElementById('error-messages').innerHTML = '<div class="alert alert-danger">Failed to send email. Please try again later.</div>';
+                });
+            }
+        });
+    </script>
 </body>
 </html>
