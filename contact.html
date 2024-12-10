@@ -60,40 +60,45 @@
         }
 
         nav {
-        background-color: #060644; /* Navigation bar background */
-        color: #ceb290; /* Navigation bar font color */
-        position: fixed; /* Fix the nav bar to the side */
-        left: 0; /* Align to the left */
-        top: 0; /* Start at the top */
-        height: 100vh; /* Full viewport height */
-        width: 200px; /* Set width for the navigation bar */
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 200px;
+        height: 100%;
+        background-color: #060644;
+        color: #f0f0ea;
         display: flex;
-        flex-direction: column; /* Stack nav items vertically */
-        justify-content: flex-start; /* Align items at the top */
-        padding: 20px; /* Add some padding */
-        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Optional shadow for depth */
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 20px;
+        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+        text-align: left;
         }
 
         nav ul {
-        list-style-type: none; /* Remove bullets */
+        list-style-type: none;
         padding: 0;
         margin: 0;
+        width: 100%;
         }
 
         nav ul li {
-        margin: 15px 0; /* Add spacing between links */
+        margin-bottom: 15px;
         }
 
         nav ul li a {
-        color: #f0f0ea; /* Font color */
-        text-decoration: none; /* Remove underline */
-        font-weight: bold; /* Make links bold */
-        font-size: 16px;
-        transition: color 0.3s ease; /* Smooth color change on hover */
+        display: block;
+        text-decoration: none;
+        color: #f0f0ea;
+        font-weight: bold;
+        padding: 10px;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
         }
 
         nav ul li a:hover {
-        color: #ccc; /* Change link color on hover */
+        background-color: #ccc;
+        color: #060644;
         }
 
         body {

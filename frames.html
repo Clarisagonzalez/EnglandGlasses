@@ -5,71 +5,131 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Frames - EnglandGlasses</title>
+
+  <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
-  <script src="js/frames.js" defer></script>
+
   <style>
-    /* Add styles for the sidebar and the hidden state here */
+    /* Sidebar Styling */
     .sidebar {
       position: fixed;
       top: 0;
       left: 0;
-      width: 250px;
+      width: 200px;
       height: 100%;
-      background-color: #343a40;
-      padding-top: 20px;
-      color: white;
-      display: none;
-      z-index: 1000;
+      background-color: #060644;
+      color: #f0f0ea;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 20px;
+      box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
     }
 
-    .sidebar.show {
-      display: block;
+    .sidebar ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+      width: 100%;
     }
 
-    .sidebar a {
+    .sidebar ul li {
+      margin-bottom: 15px;
+    }
+
+    .sidebar ul li a {
       display: block;
-      color: white;
-      padding: 10px;
       text-decoration: none;
-      margin-bottom: 10px;
-      font-size: 18px;
+      color: #f0f0ea;
+      font-weight: bold;
+      padding: 10px;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
     }
 
-    .sidebar a:hover {
-      background-color: #495057;
+    .sidebar ul li a:hover {
+      background-color: #ccc;
+      color: #060644;
     }
 
-    .toggle-btn {
-      font-size: 24px;
-      position: fixed;
-      top: 20px;
-      left: 20px;
-      background-color: transparent;
-      color: #343a40;
-      border: none;
-      cursor: pointer;
-      z-index: 1100;
-    }
-
+    /* Main Content Styling */
     .main-content {
-      margin-left: 250px;
-      transition: margin-left 0.3s;
+      margin-left: 250px; /* Adjust for sidebar width */
+      padding: 20px;
     }
 
-    .main-content.shift {
-      margin-left: 0;
+    /* Frame Cards Styling */
+    .frames-container .card {
+      border: none;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+
+    .frames-container .card img {
+      width: 100%;
+      height: auto;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+    }
+
+    .frames-container .card-body {
+      text-align: center;
+    }
+
+    .frames-container .card-title {
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .frames-container .card-text {
+      font-size: 16px;
+      color: #555;
+    }
+
+    .frames-container .btn {
+      background-color: #343a40;
+      color: white;
+      border-radius: 5px;
+      padding: 10px 20px;
+      font-size: 14px;
+    }
+
+    .frames-container .btn:hover {
+      background-color: #495057;
     }
   </style>
 </head>
 
 <body>
-  <div class="container py-5">
-    <h3 class="text-center mb-4">Frames Selection</h3>
-    <div class="row frames-container">
-      <!-- Dynamic frame cards will be injected here by JavaScript -->
+  <!-- Sidebar Navigation -->
+  <nav class="sidebar">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="sunglasses.html">Sunglasses</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="cart/cart.html">Cart</a></li>
+    </ul>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <div class="container py-5">
+      <h3 class="text-center mb-4">Frames Selection</h3>
+      <div class="row frames-container">
+        <!-- Dynamic frame cards will be injected here by JavaScript -->
+      </div>
     </div>
   </div>
+
+  <!-- Bootstrap JS and Dependencies -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <!-- Link External JavaScript -->
+  <script src="js/frames.js" defer></script>
 </body>
 
 </html>
