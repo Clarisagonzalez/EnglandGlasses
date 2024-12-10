@@ -177,11 +177,11 @@
                 <form id="contact-form">
                     <div class="form-group">
                         <label for="name">Name: *</label>
-                        <input type="text" class="form-control" id="name" name="name" required>
+                        <input type="text" class="form-control" id="name" name="from_name" required>
                     </div>
                     <div class="form-group">
                         <label for="email">Email: *</label>
-                        <input type="email" class="form-control" id="email" name="email" required>
+                        <input type="email" class="form-control" id="email" name="from_email" required>
                     </div>
                     <div class="form-group">
                         <label for="message">Message: *</label>
@@ -205,76 +205,31 @@
     <footer class="bg-light text-center py-4">
         <p>&copy; 2024 EnglandGlasses. All Rights Reserved.</p>
     </footer>
-    
-    <!-- Bootstrap JS and dependencies -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-   
+
     <!-- EmailJS SDK -->
-    <script src="js/email.min.js"></script>
-    <script type="module" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script src="https://cdn.emailjs.com/dist/email.min.js" type="text/javascript"></script>
     <script>
+        // Initialize EmailJS
         (function() {
             emailjs.init("N3gV60mxHgJhtuOS0");
         })();
-    </script>
-    <!-- Form Validation Script -->
-    <script>
-        function validateEmail(email) {
-            var re = /\S+@\S+\.\S+/;
-            return re.test(email);
-        }
 
+        // Form Validation and EmailJS Integration
         document.getElementById('contact-form').addEventListener('submit', function(event) {
             event.preventDefault();
 
-            var name = document.getElementById('name').value;
-            var email = document.getElementById('email').value;
-            var message = document.getElementById('message').value;
-            var errorMessage = "";
+            const form = this;
 
-            if (name === "") {
-                errorMessage += "Name is required.<br>";
-                document.getElementById('name').classList.add('is-invalid');
-            } else {
-                document.getElementById('name').classList.remove('is-invalid');
-            }
-            if (email === "") {
-                errorMessage += "Email is required.<br>";
-                document.getElementById('email').classList.add('is-invalid');
-            } else if (!validateEmail(email)) {
-                errorMessage += "Please enter a valid email address.<br>";
-                document.getElementById('email').classList.add('is-invalid');
-            } else {
-                document.getElementById('email').classList.remove('is-invalid');
-            }
-            if (message === "") {
-                errorMessage += "Message is required.<br>";
-                document.getElementById('message').classList.add('is-invalid');
-            } else {
-                document.getElementById('message').classList.remove('is-invalid');
-            }
-
-            if (errorMessage !== "") {
-                document.getElementById('error-messages').innerHTML = '<div class="alert alert-danger">' + errorMessage + '</div>';
-            } else {
-                document.getElementById('error-messages').innerHTML = '';
-
-                // Send the email using EmailJS
-                emailjs.send('service_1iws5t6', 'template_07lvjs2', {
-                    name: name,
-                    email: email,
-                    message: message
-                }).then(function(response) {
+            emailjs.sendForm('service_1iws5t6', 'template_07lvjs2', form)
+                .then(function(response) {
                     console.log('Email sent successfully:', response.status, response.text);
                     document.getElementById('thank-you-message').style.display = 'block';
-                    document.getElementById('contact-form').reset();
-                }, function(error) {
+                    form.reset();
+                })
+                .catch(function(error) {
                     console.error('Failed to send email:', error);
                     document.getElementById('error-messages').innerHTML = '<div class="alert alert-danger">Failed to send email. Please try again later.</div>';
                 });
-            }
         });
     </script>
 </body>
