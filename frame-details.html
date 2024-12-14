@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore detailed specifications and information about frames.">
+    <title>Frame Details</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/frames.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <style>
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f0f0ea;
+  color: #363d46;
+}
+
+.container {
+  max-width: 800px;
+  margin: 20px auto;
+}
+
+h2 {
+  text-align: center;
+  color: #060644;
+}
+
+.prescription-chart {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.prescription-chart th,
+.prescription-chart td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: center;
+}
+
+.prescription-chart th {
+  background-color: #f4f4f4;
+}
+
+.form-control {
+  width: 100px;
+  padding: 5px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+button[type="submit"] {
+  background-color: #060644;
+  color: #ffffff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+}
+
+button[type="submit"]:hover {
+  background-color: #ceb290;
+}
+</style>
+</head>
+<body style="font-family: 'Poppins', sans-serif; background-color: #f0f0ea; color: #363d46;">
+  <!-- Basic container for frame details -->
+  <div class="container" style="max-width: 800px; margin: 20px auto;">
+    <h2 style="text-align: center; color: #060644;">Enter Prescription Details</h2>
+    <form id="prescriptionForm">
+        <table class="prescription-chart">
+          <thead>
+            <tr>
+              <th>Eye</th>
+              <th>SPH</th>
+              <th>CYL</th>
+              <th>AXIS</th>
+              <th>PD</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>OD (Right Eye)</td>
+              <td><input type="text" name="sph-od" class="form-control" placeholder="0"></td>
+              <td><input type="text" name="cyl-od" class="form-control" placeholder="0"></td>
+              <td><input type="text" name="axis-od" class="form-control" placeholder="0"></td>
+              <td><input type="text" name="pd-od" class="form-control" placeholder="0"></td>
+            </tr>
+            <tr>
+              <td>OS (Left Eye)</td>
+              <td><input type="text" name="sph-os" class="form-control" placeholder="0"></td>
+              <td><input type="text" name="cyl-os" class="form-control" placeholder="0"></td>
+              <td><input type="text" name="axis-os" class="form-control" placeholder="0"></td>
+              <td><input type="text" name="pd-os" class="form-control" placeholder="0"></td>
+            </tr>
+          </tbody>
+        </table>
+        <button type="submit" class="btn btn-primary mt-2">Save</button>
+      </form>
+      
+      <!-- Next Button to Review Page -->
+<div class="form-group" style="text-align: center; margin-top: 20px;">
+    <a href="review.html" class="btn" style="background-color: #ceb290; color: #060644; padding: 10px 20px; border-radius: 5px; text-decoration: none;">Next</a>
+</div>
+
+<!-- Footer -->
+<footer style="background-color: #060644; color: #ffffff; padding: 20px 0; text-align: center; position: fixed; bottom: 0; left: 0; width: 100%; z-index: 10;">
+  <p>&copy; 2024 Your Company | All rights reserved.</p>
+  <p><a href="contact.html" style="color: #ffffff; text-decoration: none;">Contact Us</p>
+</footer>
+
+      
+
+
+    <script src="js/frames-details.js"></script>
+    
+</body>
+</html>

@@ -151,34 +151,31 @@ document.addEventListener('DOMContentLoaded', function () {
   // Select container for frames
   const framesContainer = document.querySelector('.frames-container');
 
-  // Generate HTML for each category and its subcategories
-  categories.forEach((category, categoryIndex) => {
-    // Generate category button and container for subcategories
+   // Generate HTML for each category and its subcategories
+   categories.forEach((category, categoryIndex) => {
     const categoryHTML = `
       <div class="category mb-4">
         <button class="btn btn-secondary w-100 text-left category-btn" data-category="${categoryIndex}">
           ${category.category}
         </button>
         <div class="subcategories collapse mt-3" id="category-${categoryIndex}">
-          <!-- Subcategories will be injected here -->
         </div>
       </div>
     `;
     framesContainer.insertAdjacentHTML('beforeend', categoryHTML);
 
-    // Populate subcategories for this category
     const subcategoriesContainer = document.querySelector(`#category-${categoryIndex}`);
     category.subcategories.forEach((subcat, subcatIndex) => {
       const colorOptionsHTML = subcat.colors
         .map(
           (color, colorIndex) => `
-          <input type="radio" id="color-${categoryIndex}-${subcatIndex}-${colorIndex}" name="color-${categoryIndex}-${subcatIndex}" value="${color.color}" ${colorIndex === 0 ? 'checked' : ''}>
-          <label for="color-${categoryIndex}-${subcatIndex}-${colorIndex}">${color.color}</label>
-        `
+            <input type="radio" id="color-${categoryIndex}-${subcatIndex}-${colorIndex}" name="color-${categoryIndex}-${subcatIndex}" value="${color.color}" ${colorIndex === 0 ? 'checked' : ''}>
+            <label for="color-${categoryIndex}-${subcatIndex}-${colorIndex}">${color.color}</label>
+          `
         )
         .join('');
 
-      const subcategoryHTML = `
+        const subcategoryHTML = `
         <div class="card">
           <img id="frame-image-${categoryIndex}-${subcatIndex}" src="${subcat.colors[0].src}" class="card-img-top" alt="${subcat.title}">
           <div class="card-body">
@@ -188,11 +185,43 @@ document.addEventListener('DOMContentLoaded', function () {
               <label>Choose Color:</label><br>
               ${colorOptionsHTML}
             </div>
-            <a href="frame-details.html?category=${categoryIndex}&subcategory=${subcatIndex}" class="btn btn-primary mt-2">View Details</a>
+            <a href="#" class="btn btn-primary mt-2 view-details-btn" data-category="${categoryIndex}" data-subcategory="${subcatIndex}">View Details</a>
+            <div class="prescription-options" style="display: none; margin-top: 10px;">
+              <p>Do you have a prescription?</p>
+              <button class="btn btn-secondary yes-btn" data-frame="${subcat.title}" style="margin-right: 5px;">Yes</button>
+              <button class="btn btn-secondary no-btn">No</button>
+            </div>
           </div>
         </div>
       `;
       subcategoriesContainer.insertAdjacentHTML('beforeend', subcategoryHTML);
+      
+      document.body.addEventListener('click', function (event) {
+        if (event.target && event.target.classList.contains('view-details-btn')) {
+          event.preventDefault();
+      
+          const cardBody = event.target.closest('.card-body');
+          if (cardBody) {
+            const prescriptionOptions = cardBody.querySelector('.prescription-options');
+            if (prescriptionOptions) {
+              prescriptionOptions.style.display = 'block';
+            }
+          }
+        }
+      
+        // Handle "Yes" button click
+        if (event.target && event.target.classList.contains('yes-btn')) {
+          const frameTitle = event.target.dataset.frame;
+          window.location.href = `frame-details.html?frame=${encodeURIComponent(frameTitle)}`;
+        }
+      
+        // Handle "No" button click
+        if (event.target && event.target.classList.contains('no-btn')) {
+          event.preventDefault();
+          alert("Thank you! You can proceed without entering a prescription.");
+        }
+      });
+      
 
       // Add event listeners for color selection
       subcat.colors.forEach((color, colorIndex) => {
@@ -214,6 +243,86 @@ document.addEventListener('DOMContentLoaded', function () {
       const categoryIndex = event.target.dataset.category;
       const subcategories = document.querySelector(`#category-${categoryIndex}`);
       subcategories.classList.toggle('collapse');
+    } else if (event.target.classList.contains('view-details-btn')) {
+      const categoryIndex = event.target.dataset.category;
+      const subcatIndex = event.target.dataset.subcategory;
+      showFrameDetails(categoryIndex, subcatIndex);
     }
   });
+
+  // Function to display frame details
+  function showFrameDetails(categoryIndex, subcatIndex) {
+    const selectedSubcategory = categories[categoryIndex].subcategories[subcatIndex];
+    const detailsContainer = document.getElementById('frame-details');
+
+    detailsContainer.innerHTML = `
+      <h2>${selectedSubcategory.title}</h2>
+      <img src="${selectedSubcategory.colors[0].src}" alt="${selectedSubcategory.title}">
+      <p>${selectedSubcategory.price}</p>
+      <div>
+        <label>Choose Color:</label>
+        <select id="color-select">
+          ${selectedSubcategory.colors.map(color => `
+            <option value="${color.src}">${color.color}</option>
+          `).join('')}
+        </select>
+      </div>
+      <button id="prescription-btn">Prescription</button>
+      <button id="non-prescription-btn">Non-Prescription</button>
+    `;
+
+    detailsContainer.style.display = 'block';
+
+    const colorSelect = document.getElementById('color-select');
+    colorSelect.addEventListener('change', () => {
+      const selectedColorSrc = colorSelect.value;
+      const frameImage = detailsContainer.querySelector('img');
+      frameImage.src = selectedColorSrc;
+    });
+
+    document.getElementById('prescription-btn').addEventListener('click', () => {
+      // Implement prescription handling logic here
+      alert('Prescription selected. Implement form here.');
+    });
+
+    document.getElementById('non-prescription-btn').addEventListener('click', () => {
+      // Implement non-prescription handling logic here
+      alert('Non-prescription selected. Proceed to checkout.');
+    });
+
+    // Generate dynamic color options inside 'color-options' div
+    const colorOptionsContainer = document.getElementById('color-options');
+    if (colorOptionsContainer) {
+      selectedSubcategory.colors.forEach((color, colorIndex) => {
+        const radioHTML = `
+          <input type="radio" id="detail-color-${colorIndex}" name="detail-color" value="${color.color}" ${colorIndex === 0 ? 'checked' : ''}>
+          <label for="detail-color-${colorIndex}">${color.color}</label>
+        `;
+        colorOptionsContainer.innerHTML += radioHTML;
+      });
+    
+      // After adding the radio buttons, add event listeners
+      const radioButtons = colorOptionsContainer.querySelectorAll('input[name="detail-color"]');
+      radioButtons.forEach(button => {
+        button.addEventListener('change', function() {
+          // Handle the color change here
+          console.log(`Color selected: ${this.value}`);
+        });
+      });
+    
+    } else {
+      console.error('Color options container not found!');
+    }
+
+    // Add event listeners for the color selection in the details view
+    selectedSubcategory.colors.forEach((color, colorIndex) => {
+      const colorRadio = document.querySelector(`#detail-color-${colorIndex}`);
+      colorRadio.addEventListener('change', function () {
+        if (this.checked) {
+          const frameImage = detailsContainer.querySelector('img');
+          frameImage.src = color.src;
+        }
+      });
+    });
+  }
 });
