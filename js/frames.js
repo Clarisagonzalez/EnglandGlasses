@@ -197,9 +197,37 @@ document.addEventListener('DOMContentLoaded', function () {
       subcategoriesContainer.insertAdjacentHTML('beforeend', subcategoryHTML);
       
       document.body.addEventListener('click', function (event) {
+        // Existing functionality to handle 'View Details' button click
         if (event.target && event.target.classList.contains('view-details-btn')) {
           event.preventDefault();
       
+          // Get the category index and subcategory index from the button's data attributes
+          const categoryIndex = event.target.dataset.category;
+          const subcategoryIndex = event.target.dataset.subcategory;
+      
+          // Get the selected color from the radio buttons
+          const selectedColor = document.querySelector(`input[name="color-${categoryIndex}-${subcategoryIndex}"]:checked`)?.value;
+      
+          // Save the selected frame details to localStorage
+          if (selectedColor) {
+            const selectedFrame = {
+              categoryIndex: categoryIndex,
+              subcategoryIndex: subcategoryIndex,
+              selectedColor: selectedColor
+            };
+      
+            localStorage.setItem('selectedFrame', JSON.stringify(selectedFrame)); // Save as JSON string
+          } else {
+            alert("Please select a color before proceeding.");
+            return;
+          }
+      
+          // Now navigate to the frame details page
+          window.location.href = 'frame-details.html';
+        }
+      
+        // Show prescription options
+        if (event.target && event.target.classList.contains('view-details-btn')) {
           const cardBody = event.target.closest('.card-body');
           if (cardBody) {
             const prescriptionOptions = cardBody.querySelector('.prescription-options');
@@ -209,19 +237,18 @@ document.addEventListener('DOMContentLoaded', function () {
           }
         }
       
-        // Handle "Yes" button click
+        // Handle "Yes" button click for prescription
         if (event.target && event.target.classList.contains('yes-btn')) {
           const frameTitle = event.target.dataset.frame;
           window.location.href = `frame-details.html?frame=${encodeURIComponent(frameTitle)}`;
         }
       
-        // Handle "No" button click
+        // Handle "No" button click for prescription
         if (event.target && event.target.classList.contains('no-btn')) {
           event.preventDefault();
           alert("Thank you! You can proceed without entering a prescription.");
         }
       });
-      
 
       // Add event listeners for color selection
       subcat.colors.forEach((color, colorIndex) => {
@@ -280,15 +307,7 @@ document.addEventListener('DOMContentLoaded', function () {
       frameImage.src = selectedColorSrc;
     });
 
-    document.getElementById('prescription-btn').addEventListener('click', () => {
-      // Implement prescription handling logic here
-      alert('Prescription selected. Implement form here.');
-    });
-
-    document.getElementById('non-prescription-btn').addEventListener('click', () => {
-      // Implement non-prescription handling logic here
-      alert('Non-prescription selected. Proceed to checkout.');
-    });
+    
 
     // Generate dynamic color options inside 'color-options' div
     const colorOptionsContainer = document.getElementById('color-options');
