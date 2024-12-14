@@ -66,7 +66,17 @@ button[type="submit"]:hover {
 }
 </style>
 </head>
-<body style="font-family: 'Poppins', sans-serif; background-color: #f0f0ea; color: #363d46;">
+<body>
+    <div class="container">
+       <!-- Display frame image -->
+<div class="frame-display">
+    <img id="frameImage" src="" alt="Selected frame image" style="max-width: 200px; max-height: 200px;">
+    <h3 id="frameTitle"></h3>
+</div>
+          <p><strong>Frame Style:</strong> Round</p>
+          <p><strong>Color:</strong> Black</p>
+          <p><strong>Price:</strong> $199.99</p>
+        </div>
   <!-- Basic container for frame details -->
   <div class="container" style="max-width: 800px; margin: 20px auto;">
     <h2 style="text-align: center; color: #060644;">Enter Prescription Details</h2>
@@ -116,6 +126,7 @@ button[type="submit"]:hover {
 
 
     <script src="js/frames-details.js"></script>
+    <script src="js/frames.js"></script>
     
 </body>
 </html>
