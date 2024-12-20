@@ -381,7 +381,7 @@ document.addEventListener('DOMContentLoaded', function() {
                   price: '$150',
                   colors: [
                     { color: 'Gold', src: 'images/glasses/CEO/CEO Abraham Gold.jpg' },
-                    { color: 'Silver', src: 'images/glasses/CEO/CEO Abraham Silver.jpg' },
+                    { color: 'White Gold', src: 'images/glasses/CEO/CEO Abraham Silver.jpg' },
                     { color: 'Grey', src: 'images/glasses/CEO/CEO Abraham Grey.jpg' },
                   ],
                 },
@@ -409,7 +409,7 @@ document.addEventListener('DOMContentLoaded', function() {
                   colors: [
                     { color: 'Burgundy', src: 'images/glasses/CEO/CEO Esther Burgundy.jpg' },
                     { color: 'Pink', src: 'images/glasses/CEO/CEO Esther Pink.jpg' },
-                    { color: 'Silver', src: 'images/glasses/CEO/CEO Esther Silver.jpg' },
+                    { color: 'White Gold', src: 'images/glasses/CEO/CEO Esther Silver.jpg' },
                   ],
                 },
                 {
@@ -418,7 +418,7 @@ document.addEventListener('DOMContentLoaded', function() {
                   colors: [
                     { color: 'Gold', src: 'images/glasses/CEO/CEO Ezra Gold.jpg' },
                     { color: 'Grey', src: 'images/glasses/CEO/CEO Ezra Grey.jpg' },
-                    { color: 'Silver', src: 'images/glasses/CEO/CEO Ezra Silver.jpg' },
+                    { color: 'White Gold', src: 'images/glasses/CEO/CEO Ezra Silver.jpg' },
                   ],
                 },
                 {
@@ -427,7 +427,7 @@ document.addEventListener('DOMContentLoaded', function() {
                   colors: [
                     { color: 'Gold', src: 'images/glasses/CEO/CEO Job Gold.jpg' },
                     { color: 'Grey', src: 'images/glasses/CEO/CEO Job Grey.jpg' },
-                    { color: 'Silver', src: 'images/glasses/CEO/CEO Job Silver.jpg' },
+                    { color: 'White Gold', src: 'images/glasses/CEO/CEO Job Silver.jpg' },
                   ],
                 },
                 {
@@ -436,7 +436,7 @@ document.addEventListener('DOMContentLoaded', function() {
                   colors: [
                     { color: 'Gold', src: 'images/glasses/CEO/CEO Jude Gold.jpg' },
                     { color: 'Grey', src: 'images/glasses/CEO/CEO Jude Grey.jpg' },
-                    { color: 'Silver', src: 'images/glasses/CEO/CEO Jude Silver.jpg' },
+                    { color: 'White Gold', src: 'images/glasses/CEO/CEO Jude Silver.jpg' },
                   ],
                 },
           ]
@@ -467,6 +467,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const frameImageContainer = document.querySelector('.frame-image-container');
     const frameTitle = document.querySelector('.frame-title');
     const framePrice = document.querySelector('.frame-price');
+    const frameDescription = document.querySelector('.frame-description');
     const colorOptionsContainer = document.querySelector('.color-options');
   
     // Update the page with the selected frame details
@@ -483,6 +484,11 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     if (framePrice) {
       framePrice.textContent = frame.price;
+    }
+    if (frameDescription) {
+      // Get description from localStorage and display it
+      const description = localStorage.getItem('subcategoryDescription');
+      frameDescription.textContent = description || 'No description available.';
     }
   
     // Optionally, you can also display available color options again
