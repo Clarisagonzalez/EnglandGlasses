@@ -111,7 +111,7 @@ document.addEventListener('DOMContentLoaded', function () {
           colors: [
             {color: 'Black & Brown', src: 'images/glasses/A5.0/A5.94 Black & Brown.jpg'},
             {color: 'Clear & Silver', src: 'images/glasses/A5.0/A5.94 Clear & Silver.jpg'},
-            {color: 'Clear', src: 'images/glasses/A5.0/A5.94 Clear.jpg'},
+            {color: 'Clear', src: 'images/glasses/A5.0/A5.94 Clear.jpg'}
           ],
         },
         {
@@ -144,204 +144,144 @@ document.addEventListener('DOMContentLoaded', function () {
             {color: 'Grey', src: 'images/glasses/Academic/P2031 Grey.jpg'},
           ],
         },
+        {
+          title: 'P7008',
+          price: '$130',
+          colors: [
+            {color: 'Brown', src: 'images/glasses/Academic/P7008 Brown.jpg'},
+          ],
+        },
+        {
+          title: 'P7015',
+          price: '$130',
+          colors: [
+            {color: 'Black', src: 'images/glasses/Academic/P7015 Black.jpg'},
+          ],
+        },
+        {
+          title: 'P8005',
+          price: '$130',
+          colors: [
+            {color: 'Black', src: 'images/glasses/Academic/P8005-C1 Black.jpg'},
+            {color: 'Blue', src: 'images/glasses/Academic/P8005-C2 Blue.jpg'},
+            {color: 'Grey', src: 'images/glasses/Academic/P8005-C3 Grey.jpg'},
+          ],
+        },
+        {
+          title: 'P8010',
+          price: '$130',
+          colors: [
+            {color: 'Black', src: 'images/glasses/Academic/P8010 Black.jpg'},
+            {color: 'Demi', src: 'images/glasses/Academic/P8010 Demi.jpg'},
+          ],
+        },
+        {
+          title: 'P8015',
+          price: '$130',
+          colors: [
+            {color: 'Pink', src: 'images/glasses/Academic/P8015 Pink.jpg'},
+            {color: 'Black', src: 'images/glasses/Academic/P8015-Black.jpg'},
+          ],
+        },
+        {
+          title: 'P8034',
+          price: '$130',
+          colors: [
+            {color: 'Black', src: 'images/glasses/Academic/P8034 Black.jpg'},
+            {color: 'Brown', src: 'images/glasses/Academic/P8034 Brown.jpg'},
+            {color: 'Clear', src: 'images/glasses/Academic/P8034 Clear.jpg'},
+            {color: 'Pink', src: 'images/glasses/Academic/P8034 Pink.jpg'},
+          ],
+        },
       ],
     },
   ];
 
-  // Select container for frames
-  const framesContainer = document.querySelector('.frames-container');
+   // Select container for frames
+   const framesContainer = document.querySelector('.frames-container');
 
    // Generate HTML for each category and its subcategories
    categories.forEach((category, categoryIndex) => {
-    const categoryHTML = `
-      <div class="category mb-4">
-        <button class="btn btn-secondary w-100 text-left category-btn" data-category="${categoryIndex}">
-          ${category.category}
-        </button>
-        <div class="subcategories collapse mt-3" id="category-${categoryIndex}">
-        </div>
-      </div>
-    `;
-    framesContainer.insertAdjacentHTML('beforeend', categoryHTML);
+     // Category HTML
+     const categoryHTML = `
+       <div class="category mb-4">
+         <button class="btn btn-secondary w-100 text-left category-btn" data-category="${categoryIndex}">
+           ${category.category}
+         </button>
+         <div class="subcategories collapse mt-3" id="category-${categoryIndex}">
+         </div>
+       </div>
+     `;
+     framesContainer.insertAdjacentHTML('beforeend', categoryHTML);
+ 
+     // Subcategories container
+     const subcategoriesContainer = document.querySelector(`#category-${categoryIndex}`);
+     category.subcategories.forEach((subcat, subcatIndex) => {
+       const colorOptionsHTML = subcat.colors
+         .map(
+           (color, colorIndex) => `
+             <input type="radio" id="color-${categoryIndex}-${subcatIndex}-${colorIndex}" 
+                    name="color-${categoryIndex}-${subcatIndex}" value="${color.color}" 
+                    ${colorIndex === 0 ? 'checked' : ''}>
+             <label for="color-${categoryIndex}-${subcatIndex}-${colorIndex}">${color.color}</label>
+           `
+         )
+         .join('');
+ 
+       // Subcategory HTML
+       const subcategoryHTML = `
+         <div class="card">
+           <img id="frame-image-${categoryIndex}-${subcatIndex}" src="${subcat.colors[0].src}" 
+                class="card-img-top" alt="${subcat.title}">
+           <div class="card-body">
+             <h5 class="card-title">${subcat.title}</h5>
+             <p class="card-text">${subcat.price}</p>
+             <div>
+               <label>Choose Color:</label><br>
+               ${colorOptionsHTML}
+             </div>
+             <a href="#" class="btn btn-primary mt-2 view-details-btn" 
+                data-category="${categoryIndex}" data-subcategory="${subcatIndex}">View Details</a>
+           </div>
+         </div>
+       `;
+       subcategoriesContainer.insertAdjacentHTML('beforeend', subcategoryHTML);
+ 
+       // Add event listeners for color selection
+       subcat.colors.forEach((color, colorIndex) => {
+         const colorRadio = document.querySelector(
+           `#color-${categoryIndex}-${subcatIndex}-${colorIndex}`
+         );
+         const imageElement = document.getElementById(
+           `frame-image-${categoryIndex}-${subcatIndex}`
+         );
+         colorRadio.addEventListener('change', function () {
+           if (this.checked) {
+             imageElement.src = color.src;
+           }
+         });
+       });
+     });
+   });
+ 
+   // Toggle subcategories on category button click
+   document.querySelectorAll('.category-btn').forEach((btn) => {
+     btn.addEventListener('click', function () {
+       const categoryId = this.dataset.category;
+       const subcategories = document.getElementById(`category-${categoryId}`);
+       subcategories.classList.toggle('collapse');
+     });
+   });
 
-    const subcategoriesContainer = document.querySelector(`#category-${categoryIndex}`);
-    category.subcategories.forEach((subcat, subcatIndex) => {
-      const colorOptionsHTML = subcat.colors
-        .map(
-          (color, colorIndex) => `
-            <input type="radio" id="color-${categoryIndex}-${subcatIndex}-${colorIndex}" name="color-${categoryIndex}-${subcatIndex}" value="${color.color}" ${colorIndex === 0 ? 'checked' : ''}>
-            <label for="color-${categoryIndex}-${subcatIndex}-${colorIndex}">${color.color}</label>
-          `
-        )
-        .join('');
+   // Add event listeners for "View Details" buttons
+  document.querySelectorAll('.view-details-btn').forEach((button) => {
+  button.addEventListener('click', function (event) {
+    event.preventDefault(); // Stop the default behavior
+    const categoryIndex = button.getAttribute('data-category');
+    const subcategoryIndex = button.getAttribute('data-subcategory');
 
-        const subcategoryHTML = `
-        <div class="card">
-          <img id="frame-image-${categoryIndex}-${subcatIndex}" src="${subcat.colors[0].src}" class="card-img-top" alt="${subcat.title}">
-          <div class="card-body">
-            <h5 class="card-title">${subcat.title}</h5>
-            <p class="card-text">${subcat.price}</p>
-            <div>
-              <label>Choose Color:</label><br>
-              ${colorOptionsHTML}
-            </div>
-            <a href="#" class="btn btn-primary mt-2 view-details-btn" data-category="${categoryIndex}" data-subcategory="${subcatIndex}">View Details</a>
-            <div class="prescription-options" style="display: none; margin-top: 10px;">
-              <p>Do you have a prescription?</p>
-              <button class="btn btn-secondary yes-btn" data-frame="${subcat.title}" style="margin-right: 5px;">Yes</button>
-              <button class="btn btn-secondary no-btn">No</button>
-            </div>
-          </div>
-        </div>
-      `;
-      subcategoriesContainer.insertAdjacentHTML('beforeend', subcategoryHTML);
-      
-      document.body.addEventListener('click', function (event) {
-        // Existing functionality to handle 'View Details' button click
-        if (event.target && event.target.classList.contains('view-details-btn')) {
-          event.preventDefault();
-      
-          // Get the category index and subcategory index from the button's data attributes
-          const categoryIndex = event.target.dataset.category;
-          const subcategoryIndex = event.target.dataset.subcategory;
-      
-          // Get the selected color from the radio buttons
-          const selectedColor = document.querySelector(`input[name="color-${categoryIndex}-${subcategoryIndex}"]:checked`)?.value;
-      
-          // Save the selected frame details to localStorage
-          if (selectedColor) {
-            const selectedFrame = {
-              categoryIndex: categoryIndex,
-              subcategoryIndex: subcategoryIndex,
-              selectedColor: selectedColor
-            };
-      
-            localStorage.setItem('selectedFrame', JSON.stringify(selectedFrame)); // Save as JSON string
-          } else {
-            alert("Please select a color before proceeding.");
-            return;
-          }
-      
-          // Now navigate to the frame details page
-          window.location.href = 'frame-details.html';
-        }
-      
-        // Show prescription options
-        if (event.target && event.target.classList.contains('view-details-btn')) {
-          const cardBody = event.target.closest('.card-body');
-          if (cardBody) {
-            const prescriptionOptions = cardBody.querySelector('.prescription-options');
-            if (prescriptionOptions) {
-              prescriptionOptions.style.display = 'block';
-            }
-          }
-        }
-      
-        // Handle "Yes" button click for prescription
-        if (event.target && event.target.classList.contains('yes-btn')) {
-          const frameTitle = event.target.dataset.frame;
-          window.location.href = `frame-details.html?frame=${encodeURIComponent(frameTitle)}`;
-        }
-      
-        // Handle "No" button click for prescription
-        if (event.target && event.target.classList.contains('no-btn')) {
-          event.preventDefault();
-          alert("Thank you! You can proceed without entering a prescription.");
-        }
-      });
-
-      // Add event listeners for color selection
-      subcat.colors.forEach((color, colorIndex) => {
-        const colorRadio = document.querySelector(`#color-${categoryIndex}-${subcatIndex}-${colorIndex}`);
-        const imageElement = document.getElementById(`frame-image-${categoryIndex}-${subcatIndex}`);
-
-        colorRadio.addEventListener('change', function () {
-          if (this.checked) {
-            imageElement.src = color.src;
-          }
-        });
-      });
-    });
+    // Redirect to the details page
+    window.location.href = `frame-details.html?category=${categoryIndex}&subcategory=${subcategoryIndex}`;
   });
-
-  // Add event listeners to toggle subcategories
-  framesContainer.addEventListener('click', function (event) {
-    if (event.target.classList.contains('category-btn')) {
-      const categoryIndex = event.target.dataset.category;
-      const subcategories = document.querySelector(`#category-${categoryIndex}`);
-      subcategories.classList.toggle('collapse');
-    } else if (event.target.classList.contains('view-details-btn')) {
-      const categoryIndex = event.target.dataset.category;
-      const subcatIndex = event.target.dataset.subcategory;
-      showFrameDetails(categoryIndex, subcatIndex);
-    }
-  });
-
-  // Function to display frame details
-  function showFrameDetails(categoryIndex, subcatIndex) {
-    const selectedSubcategory = categories[categoryIndex].subcategories[subcatIndex];
-    const detailsContainer = document.getElementById('frame-details');
-
-    detailsContainer.innerHTML = `
-      <h2>${selectedSubcategory.title}</h2>
-      <img src="${selectedSubcategory.colors[0].src}" alt="${selectedSubcategory.title}">
-      <p>${selectedSubcategory.price}</p>
-      <div>
-        <label>Choose Color:</label>
-        <select id="color-select">
-          ${selectedSubcategory.colors.map(color => `
-            <option value="${color.src}">${color.color}</option>
-          `).join('')}
-        </select>
-      </div>
-      <button id="prescription-btn">Prescription</button>
-      <button id="non-prescription-btn">Non-Prescription</button>
-    `;
-
-    detailsContainer.style.display = 'block';
-
-    const colorSelect = document.getElementById('color-select');
-    colorSelect.addEventListener('change', () => {
-      const selectedColorSrc = colorSelect.value;
-      const frameImage = detailsContainer.querySelector('img');
-      frameImage.src = selectedColorSrc;
-    });
-
-    
-
-    // Generate dynamic color options inside 'color-options' div
-    const colorOptionsContainer = document.getElementById('color-options');
-    if (colorOptionsContainer) {
-      selectedSubcategory.colors.forEach((color, colorIndex) => {
-        const radioHTML = `
-          <input type="radio" id="detail-color-${colorIndex}" name="detail-color" value="${color.color}" ${colorIndex === 0 ? 'checked' : ''}>
-          <label for="detail-color-${colorIndex}">${color.color}</label>
-        `;
-        colorOptionsContainer.innerHTML += radioHTML;
-      });
-    
-      // After adding the radio buttons, add event listeners
-      const radioButtons = colorOptionsContainer.querySelectorAll('input[name="detail-color"]');
-      radioButtons.forEach(button => {
-        button.addEventListener('change', function() {
-          // Handle the color change here
-          console.log(`Color selected: ${this.value}`);
-        });
-      });
-    
-    } else {
-      console.error('Color options container not found!');
-    }
-
-    // Add event listeners for the color selection in the details view
-    selectedSubcategory.colors.forEach((color, colorIndex) => {
-      const colorRadio = document.querySelector(`#detail-color-${colorIndex}`);
-      colorRadio.addEventListener('change', function () {
-        if (this.checked) {
-          const frameImage = detailsContainer.querySelector('img');
-          frameImage.src = color.src;
-        }
-      });
-    });
-  }
+}); 
 });

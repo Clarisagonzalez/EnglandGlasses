@@ -153,7 +153,56 @@ document.addEventListener('DOMContentLoaded', function() {
                 { color: 'Black', src: 'images/glasses/Academic/P2031 Black.jpg' },
                 { color: 'Grey', src: 'images/glasses/Academic/P2031 Grey.jpg' }
               ]
-            }
+            },
+            {
+                title: 'P7008',
+                price: '$130',
+                colors: [
+                  {color: 'Brown', src: 'images/glasses/Academic/P7008 Brown.jpg'},
+                ],
+              },
+              {
+                title: 'P7015',
+                price: '$130',
+                colors: [
+                  {color: 'Black', src: 'images/glasses/Academic/P7015 Black.jpg'},
+                ],
+              },
+              {
+                title: 'P8005',
+                price: '$130',
+                colors: [
+                  {color: 'Black', src: 'images/glasses/Academic/P8005-C1 Black.jpg'},
+                  {color: 'Blue', src: 'images/glasses/Academic/P8005-C2 Blue.jpg'},
+                  {color: 'Grey', src: 'images/glasses/Academic/P8005-C3 Grey.jpg'},
+                ],
+              },
+              {
+                title: 'P8010',
+                price: '$130',
+                colors: [
+                  {color: 'Black', src: 'images/glasses/Academic/P8010 Black & Blue.jpg'},
+                  {color: 'Demi', src: 'images/glasses/Academic/P8010 Demi.jpg'},
+                ],
+              },
+              {
+                title: 'P8015',
+                price: '$130',
+                colors: [
+                  {color: 'Pink', src: 'images/glasses/Academic/P8015 Pink.jpg'},
+                  {color: 'Black', src: 'images/glasses/Academic/P8015-Black.jpg'},
+                ],
+              },
+              {
+                title: 'P8034',
+                price: '$130',
+                colors: [
+                  {color: 'Black', src: 'images/glasses/Academic/P8034 Black.jpg'},
+                  {color: 'Brown', src: 'images/glasses/Academic/P8034 Brown.jpg'},
+                  {color: 'Clear', src: 'images/glasses/Academic/P8034 Clear.jpg'},
+                  {color: 'Pink', src: 'images/glasses/Academic/P8034 Pink.jpg'},
+                ],
+              },
           ]
         }
       ];
