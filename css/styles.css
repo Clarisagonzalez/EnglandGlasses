@@ -91,3 +91,33 @@ body {
     }
   }
   
+ 
+/* Style the category buttons */
+.category-btn {
+  background-color: #f1f1f1;
+  color: #333;
+  border: 1px solid #ddd;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+.category-btn.active {
+  background-color: #060644;
+  color: white;
+  border-color: #060644;
+}
+
+.category-btn:hover {
+  background-color: #060644;
+  color: whitesmoke
+}
+
+.subcategories {
+  padding-left: 20px;
+}
+
+.card {
+  margin: 10px 0;
+}

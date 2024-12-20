@@ -433,83 +433,97 @@ document.addEventListener('DOMContentLoaded', function () {
       ];
 
    // Select container for frames
-   const framesContainer = document.querySelector('.frames-container');
+const framesContainer = document.querySelector('.frames-container');
 
-   // Generate HTML for each category and its subcategories
-   categories.forEach((category, categoryIndex) => {
-     // Category HTML
-     const categoryHTML = `
-       <div class="category mb-4">
-         <button class="btn btn-secondary w-100 text-left category-btn" data-category="${categoryIndex}">
-           ${category.category}
-         </button>
-         <div class="subcategories collapse mt-3" id="category-${categoryIndex}">
-         </div>
-       </div>
-     `;
-     framesContainer.insertAdjacentHTML('beforeend', categoryHTML);
- 
-     // Subcategories container
-     const subcategoriesContainer = document.querySelector(`#category-${categoryIndex}`);
-     category.subcategories.forEach((subcat, subcatIndex) => {
-       const colorOptionsHTML = subcat.colors
-         .map(
-           (color, colorIndex) => `
-             <input type="radio" id="color-${categoryIndex}-${subcatIndex}-${colorIndex}" 
-                    name="color-${categoryIndex}-${subcatIndex}" value="${color.color}" 
-                    ${colorIndex === 0 ? 'checked' : ''}>
-             <label for="color-${categoryIndex}-${subcatIndex}-${colorIndex}">${color.color}</label>
-           `
-         )
-         .join('');
- 
-       // Subcategory HTML
-       const subcategoryHTML = `
-         <div class="card">
-           <img id="frame-image-${categoryIndex}-${subcatIndex}" src="${subcat.colors[0].src}" 
-                class="card-img-top" alt="${subcat.title}">
-           <div class="card-body">
-             <h5 class="card-title">${subcat.title}</h5>
-             <p class="card-text">${subcat.price}</p>
-             <div>
-               <label>Choose Color:</label><br>
-               ${colorOptionsHTML}
-             </div>
-             <a href="#" class="btn btn-primary mt-2 view-details-btn" 
-                data-category="${categoryIndex}" data-subcategory="${subcatIndex}">View Details</a>
-           </div>
-         </div>
-       `;
-       subcategoriesContainer.insertAdjacentHTML('beforeend', subcategoryHTML);
- 
-       // Add event listeners for color selection
-       subcat.colors.forEach((color, colorIndex) => {
-         const colorRadio = document.querySelector(
-           `#color-${categoryIndex}-${subcatIndex}-${colorIndex}`
-         );
-         const imageElement = document.getElementById(
-           `frame-image-${categoryIndex}-${subcatIndex}`
-         );
-         colorRadio.addEventListener('change', function () {
-           if (this.checked) {
-             imageElement.src = color.src;
-           }
-         });
-       });
-     });
-   });
- 
-   // Toggle subcategories on category button click
-   document.querySelectorAll('.category-btn').forEach((btn) => {
-     btn.addEventListener('click', function () {
-       const categoryId = this.dataset.category;
-       const subcategories = document.getElementById(`category-${categoryId}`);
-       subcategories.classList.toggle('collapse');
-     });
-   });
+// Generate HTML for each category and its subcategories
+categories.forEach((category, categoryIndex) => {
+  // Generate HTML for each category and its subcategories
+  const categoryHTML = `
+    <div class="category mb-4">
+      <button class="frame-btn w-100 text-left category-btn" data-category="${categoryIndex}">
+        ${category.category}
+      </button>
+      <div class="subcategories collapse mt-3" id="category-${categoryIndex}">
+        <!-- Subcategories will be added here dynamically -->
+      </div>
+    </div>
+  `;
+  framesContainer.insertAdjacentHTML('beforeend', categoryHTML);
 
-   // Add event listeners for "View Details" buttons
-  document.querySelectorAll('.view-details-btn').forEach((button) => {
+  // Subcategories container
+  const subcategoriesContainer = document.querySelector(`#category-${categoryIndex}`);
+
+  // Generate HTML for each subcategory within the current category
+  category.subcategories.forEach((subcat, subcatIndex) => {
+    const colorOptionsHTML = subcat.colors
+      .map(
+        (color, colorIndex) => `
+          <input type="radio" id="color-${categoryIndex}-${subcatIndex}-${colorIndex}" 
+                 name="color-${categoryIndex}-${subcatIndex}" value="${color.color}" 
+                 ${colorIndex === 0 ? 'checked' : ''}>
+          <label for="color-${categoryIndex}-${subcatIndex}-${colorIndex}">${color.color}</label>
+        `
+      )
+      .join('');
+
+    // Subcategory HTML
+    const subcategoryHTML = `
+      <div class="card">
+        <img id="frame-image-${categoryIndex}-${subcatIndex}" src="${subcat.colors[0].src}" 
+             class="card-img-top" alt="${subcat.title}">
+        <div class="card-body">
+          <h5 class="card-title">${subcat.title}</h5>
+          <p class="card-text">${subcat.price}</p>
+          <div>
+            <label>Choose Color:</label><br>
+            ${colorOptionsHTML}
+          </div>
+          <a href="#" class="btn btn-primary mt-2 view-details-btn" 
+             data-category="${categoryIndex}" data-subcategory="${subcatIndex}">View Details</a>
+        </div>
+      </div>
+    `;
+    subcategoriesContainer.insertAdjacentHTML('beforeend', subcategoryHTML);
+
+    // Add event listeners for color selection
+    subcat.colors.forEach((color, colorIndex) => {
+      const colorRadio = document.querySelector(
+        `#color-${categoryIndex}-${subcatIndex}-${colorIndex}`
+      );
+      const imageElement = document.getElementById(
+        `frame-image-${categoryIndex}-${subcatIndex}`
+      );
+      colorRadio.addEventListener('change', function () {
+        if (this.checked) {
+          imageElement.src = color.src;
+        }
+      });
+    });
+  });
+});
+
+// Add event listeners for category buttons after all content is injected
+document.querySelectorAll('.category-btn').forEach((btn) => {
+  btn.addEventListener('click', function () {
+    // Remove active class from all buttons
+    document.querySelectorAll('.category-btn').forEach((btn) => {
+      btn.classList.remove('active');
+    });
+
+    // Add active class to the clicked button
+    this.classList.add('active');
+
+    // Toggle the visibility of the subcategories for this category
+    const categoryId = this.dataset.category;
+    const subcategories = document.getElementById(`category-${categoryId}`);
+    if (subcategories) {
+      subcategories.classList.toggle('collapse');
+    }
+  });
+});
+
+// Add event listeners for "View Details" buttons after all content is injected
+document.querySelectorAll('.view-details-btn').forEach((button) => {
   button.addEventListener('click', function (event) {
     event.preventDefault(); // Stop the default behavior
     const categoryIndex = button.getAttribute('data-category');
@@ -518,5 +532,5 @@ document.addEventListener('DOMContentLoaded', function () {
     // Redirect to the details page
     window.location.href = `frame-details.html?category=${categoryIndex}&subcategory=${subcategoryIndex}`;
   });
-}); 
+});
 });
