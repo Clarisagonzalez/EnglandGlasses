@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
       window.location.href = 'index.html'; // Redirect to the home page or any other page
       return;
     }
+
   
     const { categoryIndex, subcategoryIndex, selectedColor } = selectedFrame;
     const categories = [
@@ -203,6 +204,241 @@ document.addEventListener('DOMContentLoaded', function() {
                   {color: 'Pink', src: 'images/glasses/Academic/P8034 Pink.jpg'},
                 ],
               },
+              {
+                title: 'P8016',
+                price: '$130',
+                colors: [
+                  {color: 'Black', src: 'images/glasses/Academic/P8016 Black.jpg'},
+                  {color: 'Blue', src: 'images/glasses/Academic/P8016 Blue.jpg'},
+                  {color: 'Peach', src: 'images/glasses/Academic/P8016 Peach.jpg'},
+                ],
+              },
+              {
+                title: 'P8021',
+                price: '$130',
+                colors: [
+                  {color: 'Black', src: 'images/glasses/Academic/P8021 Black.jpg'},
+                  {color: 'Clear', src: 'images/glasses/Academic/P8021 Clear.jpg'},
+                  {color: 'Wine', src: 'images/glasses/Academic/P8021 Wine.jpg'},
+                ],
+              },
+              {
+                title: 'P8026',
+                price: '$130',
+                colors: [
+                  {color: 'Black', src: 'images/glasses/Academic/P8026 Black.jpg'},
+                  {color: 'Pink', src: 'images/glasses/Academic/P8026 Pink.jpg'},
+                  {color: 'Teal', src: 'images/glasses/Academic/P8026 Teal.jpg'},
+                ],
+              },
+              {
+                title: 'P8029',
+                price: '$130',
+                colors: [
+                  {color: 'Black', src: 'images/glasses/Academic/P8029 Black.jpg'},
+                  {color: 'Blue', src: 'images/glasses/Academic/P8029 Blue.jpg'},
+            
+                ],
+              },{
+                title: 'P8032',
+                price: '$130',
+                colors: [
+                  {color: 'Hot Pink', src: 'images/glasses/Academic/P8032 Hotpink.jpg'},
+            
+                ],
+              },
+              {
+                title: 'P8036',
+                price: '$130',
+                colors: [
+                  {color: 'Black', src: 'images/glasses/Academic/P8036 Black.jpg'},
+                  {color: 'Brown', src: 'images/glasses/Academic/P8036 Brown.jpg'},
+                  {color: 'Clear', src: 'images/glasses/Academic/P8036 Clear.jpg'},
+                ],
+              },
+              {
+                title: 'P8037',
+                price: '$130',
+                colors: [
+                  {color: 'Black', src: 'images/glasses/Academic/P8037 Black.jpg'},
+                  {color: 'Wine', src: 'images/glasses/Academic/P8037 Wine.jpg'},
+                ],
+              },
+              {
+                title: 'P8038',
+                price: '$130',
+                colors: [
+                  {color: 'Black/Blue', src: 'images/glasses/Academic/P8038 Black-Blue.jpg'},
+                  {color: 'Black', src: 'images/glasses/Academic/P8038 Black.jpg'},
+                ],
+              },
+              {
+                title: 'P8040',
+                price: '$130',
+                colors: [
+                  {color: 'Blue', src: 'images/glasses/Academic/P8040 Blue.jpg'},
+                  {color: 'Brown', src: 'images/glasses/Academic/P8040 Brown.jpg'},
+          
+                ],
+              },
+              {
+                title: 'P8041',
+                price: '$130',
+                colors: [
+                  {color: 'Black', src: 'images/glasses/Academic/P8041 Black.jpg'},
+                  {color: 'Brown', src: 'images/glasses/Academic/P8041 Brown.jpg'},
+                ],
+              },
+              {
+                title: 'P8042',
+                price: '$130',
+                colors: [
+                  {color: 'Black', src: 'images/glasses/Academic/P8042 Black.jpg'},
+                
+                ],
+              },
+              {
+                title: 'P8045',
+                price: '$130',
+                colors: [
+                  {color: 'Brown', src: 'images/glasses/Academic/P8045 Brown.jpg'},
+                
+                ],
+              },
+              {
+                title: 'P8046',
+                price: '$130',
+                colors: [
+                  {color: 'Black', src: 'images/glasses/Academic/P8046 Black.jpg'},
+                  {color: 'Brown', src: 'images/glasses/Academic/P8046 Brown.jpg'},
+                  {color: 'Grey', src: 'images/glasses/Academic/P8046 Grey.jpg'},
+                ],
+              },
+              {
+                title: 'P8047',
+                price: '$130',
+                colors: [
+                  {color: 'Blue', src: 'images/glasses/Academic/P8047 Blue.jpg'},
+                  {color: 'Pink', src: 'images/glasses/Academic/P8047 Pink.jpg'},
+                  {color: 'Wine', src: 'images/glasses/Academic/P8047 Wine.jpg'},
+                ],
+              },
+              {
+                title: 'P8048',
+                price: '$130',
+                colors: [
+                  {color: 'Black', src: 'images/glasses/Academic/P8048 Black.jpg'},
+                  {color: 'Pink', src: 'images/glasses/Academic/P8048 Pink.jpg'},
+                  {color: 'Wine', src: 'images/glasses/Academic/P8048 Wine.jpg'},
+                ],
+              },
+              {
+                title: 'P8049',
+                price: '$130',
+                colors: [
+                  {color: 'Black', src: 'images/glasses/Academic/P8049 Black.jpg'},
+                  {color: 'Clear', src: 'images/glasses/Academic/P8049 Clear.jpg'},
+                  {color: 'Wine', src: 'images/glasses/Academic/P8049 Wine.jpg'},
+                ],
+              },{
+                title: 'P8050',
+                price: '$130',
+                colors: [
+                  {color: 'Black', src: 'images/glasses/Academic/P8050 Black.jpg'},
+                  {color: 'Pink', src: 'images/glasses/Academic/P8050 Pink.jpg'},
+                  {color: 'Wine', src: 'images/glasses/Academic/P8050 Wine.jpg'},
+                ],
+              },{
+                title: 'P8052',
+                price: '$130',
+                colors: [
+                  {color: 'Black', src: 'images/glasses/Academic/P8052 Black.jpg'},
+                  {color: 'Wine', src: 'images/glasses/Academic/P8052 Wine.jpg'},
+                ],
+              },{
+                title: 'P8053',
+                price: '$130',
+                colors: [
+                  {color: 'Black', src: 'images/glasses/Academic/P8053 Black.jpg'},
+                ],
+              },
+              {
+                title: 'P8055',
+                price: '$130',
+                colors: [
+                  {color: 'Black', src: 'images/glasses/Academic/P8055 Black.jpg'},
+                  {color: 'Brown', src: 'images/glasses/Academic/P8055 Brown.jpg'},
+                  {color: 'Grey', src: 'images/glasses/Academic/P8055 Grey.jpg'},
+                ],
+              },
+            ],
+        },
+        {
+              category: 'CEO',  
+              subcategories: [
+                {
+                  title: 'CEO Abraham',
+                  price: '$150',
+                  colors: [
+                    { color: 'Gold', src: 'images/glasses/CEO/CEO Abraham Gold.jpg' },
+                    { color: 'Silver', src: 'images/glasses/CEO/CEO Abraham Silver.jpg' },
+                    { color: 'Grey', src: 'images/glasses/CEO/CEO Abraham Grey.jpg' },
+                  ],
+                },
+                {
+                  title: 'CEO Andrew',
+                  price: '$160',
+                  colors: [
+                    { color: 'Gold', src: 'images/glasses/CEO/CEO Andrew Gold.jpg' },
+                    { color: 'Grey', src: 'images/glasses/CEO/CEO Andrew Grey.jpg' },
+                    { color: 'Silver', src: 'images/glasses/CEO/CEO Andrew Silver.jpg' },
+                  ],
+                },
+                {
+                  title: 'CEO Chloe',
+                  price: '$170',
+                  colors: [
+                    { color: 'Gold', src: 'images/glasses/CEO/CEO Chloe Gold.jpg' },
+                    { color: 'Silver', src: 'images/glasses/CEO/CEO Chloe Silver.jpg' },
+                  
+                  ],
+                },
+                {
+                  title: 'CEO Esther',
+                  price: '$170',
+                  colors: [
+                    { color: 'Burgundy', src: 'images/glasses/CEO/CEO Esther Burgundy.jpg' },
+                    { color: 'Pink', src: 'images/glasses/CEO/CEO Esther Pink.jpg' },
+                    { color: 'Silver', src: 'images/glasses/CEO/CEO Esther Silver.jpg' },
+                  ],
+                },
+                {
+                  title: 'CEO Ezra',
+                  price: '$170',
+                  colors: [
+                    { color: 'Gold', src: 'images/glasses/CEO/CEO Ezra Gold.jpg' },
+                    { color: 'Grey', src: 'images/glasses/CEO/CEO Ezra Grey.jpg' },
+                    { color: 'Silver', src: 'images/glasses/CEO/CEO Ezra Silver.jpg' },
+                  ],
+                },
+                {
+                  title: 'CEO Job',
+                  price: '$170',
+                  colors: [
+                    { color: 'Gold', src: 'images/glasses/CEO/CEO Job Gold.jpg' },
+                    { color: 'Grey', src: 'images/glasses/CEO/CEO Job Grey.jpg' },
+                    { color: 'Silver', src: 'images/glasses/CEO/CEO Job Silver.jpg' },
+                  ],
+                },
+                {
+                  title: 'CEO Jude',
+                  price: '$170',
+                  colors: [
+                    { color: 'Gold', src: 'images/glasses/CEO/CEO Jude Gold.jpg' },
+                    { color: 'Grey', src: 'images/glasses/CEO/CEO Jude Grey.jpg' },
+                    { color: 'Silver', src: 'images/glasses/CEO/CEO Jude Silver.jpg' },
+                  ],
+                },
           ]
         }
       ];
@@ -268,6 +504,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   
     // You could add additional functionality here (e.g., adding to cart, prescription input, etc.)
-  });
+});
 
   
