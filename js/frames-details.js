@@ -541,3 +541,30 @@ document.addEventListener('DOMContentLoaded', function () {
       document.querySelector('#frame-price').innerText = frameDetails.price;
       document.querySelector('#frame-color').innerText = frameDetails.color;
     });
+
+    // Function to capture the prescription details and save them to localStorage
+document.getElementById('prescriptionForm').addEventListener('submit', function (e) {
+  e.preventDefault(); // Prevent the default form submission
+
+  // Capture prescription values from the form
+  const prescriptionData = {
+      od: {
+          sph: document.getElementById('sph-od').value,
+          cyl: document.getElementById('cyl-od').value,
+          axis: document.getElementById('axis-od').value,
+          pd: document.getElementById('pd-od').value,
+      },
+      os: {
+          sph: document.getElementById('sph-os').value,
+          cyl: document.getElementById('cyl-os').value,
+          axis: document.getElementById('axis-os').value,
+          pd: document.getElementById('pd-os').value,
+      }
+  };
+
+  // Save the prescription data to localStorage
+  localStorage.setItem('prescription', JSON.stringify(prescriptionData));
+
+  // Optionally, you could redirect to the next page here
+  window.location.href = 'review.html'; // Redirect to the review page
+});
