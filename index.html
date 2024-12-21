@@ -230,13 +230,21 @@ header p {
 
 <body>
   <!-- Sidebar Navigation -->
-  <nav class="sidebar">
-    <ul>
-      <li><a href="frames.html">Frames</a></li>
-      <li><a href="contact.html">Contact</a></li>
-      <li><a href="cart/cart.html">Cart</a></li>
-    </ul>
-  </nav>
+<nav class="sidebar">
+  <ul>
+    <!-- Frames Dropdown -->
+    <li class="dropdown">
+      <a href="frames.html" class="dropdown-toggle">Frames</a>
+      <ul class="dropdown-menu">
+        <li><a href="#" class="frame-category" data-category="A5.0">A5.0</a></li>
+        <li><a href="#" class="frame-category" data-category="Academic">Academic</a></li>
+        <li><a href="#" class="frame-category" data-category="CEO">CEO</a></li>
+      </ul>
+    </li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="cart/cart.html">Cart</a></li>
+  </ul>
+</nav>
 
   <!-- Main Content -->
   <div class="main-content">

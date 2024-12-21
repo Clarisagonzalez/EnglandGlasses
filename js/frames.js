@@ -488,6 +488,7 @@ if (!framesContainer) {
   return; // Exit if framesContainer is not found
 }
 
+
 // Generate HTML for each category and its subcategories
 categories.forEach((category, categoryIndex) => {
   // Generate HTML for each category and its subcategories
