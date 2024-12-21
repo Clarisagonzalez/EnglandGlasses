@@ -5,13 +5,10 @@
    Blue Gray Dark  #363d46
    Blue Gary Light #727880
 */
-* {
+body {
+  margin: 0;
   font-family: 'Poppins', sans-serif;
 }
-body {
-    display: flex;
-    margin: 0;
-  }
   
   .sidebar {
     width: 200px;
@@ -120,4 +117,72 @@ body {
 
 .card {
   margin: 10px 0;
+}
+/* Header Styles */
+header {
+  background-color: #fff; /* White background for cleanliness */
+  padding: 20px 0; /* Padding to give the header space */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Light shadow for separation */
+  position: sticky; /* Keeps the header fixed at the top */
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.logo img {
+  width: 150px;  /* Adjust the width to make it bigger */
+  height: auto;  /* Maintain aspect ratio */
+  display: block;
+  margin: 0 auto;
+}
+
+.navigation ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navigation li {
+  margin-left: 20px;
+}
+
+.navigation a {
+  text-decoration: none;
+  color: #363d46; /* Lighter text color for links */
+  font-size: 16px;
+  font-weight: 500;
+  transition: color 0.3s ease; /* Smooth hover transition */
+}
+
+.navigation a:hover {
+  color: #060644; /* Dark color for hover effect */
+}
+
+/* Mobile View */
+@media (max-width: 768px) {
+  .header-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .navigation ul {
+    flex-direction: column;
+    margin-top: 10px;
+  }
+
+  .navigation li {
+    margin-left: 0;
+    margin-top: 10px;
+  }
 }

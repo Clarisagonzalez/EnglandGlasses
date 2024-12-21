@@ -15,48 +15,7 @@
     body {
       font-family: 'Poppins', sans-serif;
     }
-    /* Sidebar Styling */
-    .sidebar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 200px;
-      height: 100%;
-      background-color: #060644;
-      color: #f0f0ea;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      padding: 20px;
-      box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-    }
-
-    .sidebar ul {
-      list-style-type: none;
-      padding: 0;
-      margin: 0;
-      width: 100%;
-    }
-
-    .sidebar ul li {
-      margin-bottom: 15px;
-    }
-
-    .sidebar ul li a {
-      display: block;
-      text-decoration: none;
-      color: #f0f0ea;
-      font-weight: bold;
-      padding: 10px;
-      border-radius: 5px;
-      transition: background-color 0.3s ease;
-    }
-
-    .sidebar ul li a:hover {
-      background-color: #ccc;
-      color: #060644;
-    }
-
+    
     /* Main Content Styling */
     .main-content {
       margin-left: 250px; /* Adjust for sidebar width */
@@ -103,30 +62,64 @@
     .frames-container .btn:hover {
       background-color: #495057;
     }
+    .back-btn {
+   display: inline-block;
+   padding: 10px 20px;
+   background-color: #060644; /* Choose a color that fits your design */
+   color: white;
+   text-decoration: none;
+   border-radius: 5px;
+   font-size: 16px;
+   transition: background-color 0.3s ease;
+   position: fixed; /* Keeps it fixed at the bottom */
+   bottom: 200px; /* Adjust distance from the bottom to be above the footer */
+   left: 50%; /* Center the button horizontally */
+   transform: translateX(-50%); /* Align button exactly in the center */
+   z-index: 15;
+}
+
+.back-btn:hover {
+   background-color: #5049a0; /* A darker shade for hover effect */
+}
   </style>
 </head>
 
 <body>
-  <!-- Sidebar Navigation -->
-  <nav class="sidebar">
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="contact.html">Contact</a></li>
-      <li><a href="cart/cart.html">Cart</a></li>
-    </ul>
-  </nav>
+  <header>
+    <div class="header-container">
+        <div class="logo">
+            <a href="#"><img src="images/logo2.png" alt="Your Logo"></a>
+        </div>
+        <nav class="navigation">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="frames.html">Shop</a></li>
+                <li><a href="#">Cart</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
 
   <!-- Main Content -->
-  <div class="main-content">
-    <div class="container py-5">
-      <h3 class="text-center mb-4">Frames Selection</h3>
-      <div class="row frames-container">
-        <!-- Dynamic frame cards will be injected here by JavaScript -->
-      </div>
-      <div id="frame-details" style="display: none;"></div>
+<div class="main-content">
+  <div class="container py-5">
+    <h3 class="text-center mb-4">Frames Selection</h3>
+    <div class="row frames-container">
+      <!-- Dynamic frame cards will be injected here by JavaScript -->
     </div>
+    <div id="frame-details" style="display: none;"></div>
   </div>
+</div>
 
+<!-- Back Button (Placed outside of the footer) -->
+<a href="javascript:history.back()" class="back-btn">Back</a>
+
+<!-- Footer -->
+<footer style="background-color: #060644; color: #ffffff; padding: 20px 0; text-align: center; position: fixed; bottom: 0; left: 0; width: 100%; z-index: 5;">
+  <p>&copy; 2024 Your Company | All rights reserved.</p>
+  <p><a href="contact.html" style="color: #ffffff; text-decoration: none;">Contact Us</a></p>
+</footer>
   
 
   <!-- Bootstrap JS and Dependencies -->
