@@ -33,58 +33,29 @@ body {
     color: white;
   }
   
-  .main-content {
-    margin-left: 200px;
-    width: calc(100% - 200px);
-  }
   
   .hero-section {
     background: linear-gradient(to right, #333, #555);
   }
   
-  .card {
-    transition: transform 0.2s;
-  }
-  
-  .card:hover {
-    transform: scale(1.05);
-  }
-  
-  .card-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: space-between;
-  }
-  
-  .card {
-    width: 30%; /* Adjust to fit multiple cards in a row */
-    box-sizing: border-box;
-    background-color: #fff;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .card-img {
-    width: 100%;
-    height: auto;
-  }
-  
-  .card-info {
-    padding: 10px;
-    text-align: center;
-  }
   
   @media (max-width: 768px) {
     .card {
       width: 48%;
+    }
+    .frames-container .card {
+      width: 45%; /* 2 cards per row */
     }
   }
   
   @media (max-width: 480px) {
     .card {
       width: 100%;
+    }
+  }
+  @media (max-width: 576px) {
+    .frames-container .card {
+      width: 100%; /* 1 card per row */
     }
   }
   
@@ -95,7 +66,7 @@ body {
   color: #333;
   border: 1px solid #ddd;
   padding: 10px;
-  font-size: 16px;
+  font-size: 20px;
   border-radius: 5px;
   transition: all 0.3s ease;
 }
@@ -116,7 +87,7 @@ body {
 }
 
 .card {
-  margin: 10px 0;
+  margin: 30px 0;
 }
 /* Header Styles */
 header {
@@ -185,4 +156,9 @@ header {
     margin-left: 0;
     margin-top: 10px;
   }
+}
+.category-card.active {
+  border: 2px solid #060644;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transform: scale(1.05);
 }

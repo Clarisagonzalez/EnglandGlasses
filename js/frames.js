@@ -483,6 +483,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
    // Select container for frames
 const framesContainer = document.querySelector('.frames-container');
+if (!framesContainer) {
+  console.error('Frames container not found in the DOM!');
+  return; // Exit if framesContainer is not found
+}
 
 // Generate HTML for each category and its subcategories
 categories.forEach((category, categoryIndex) => {
@@ -501,6 +505,10 @@ categories.forEach((category, categoryIndex) => {
 
   // Subcategories container
   const subcategoriesContainer = document.querySelector(`#category-${categoryIndex}`);
+  if (!subcategoriesContainer) {
+    console.error(`Subcategories container for category-${categoryIndex} not found!`);
+    return; // Exit if subcategoriesContainer is not found
+  }
 
   // Generate HTML for each subcategory within the current category
   category.subcategories.forEach((subcat, subcatIndex) => {
@@ -582,13 +590,38 @@ document.querySelectorAll('.view-details-btn').forEach((button) => {
     const category = categories[categoryIndex];
     const subcategory = category.subcategories[subcategoryIndex];
 
-    // Store details in localStorage
-    localStorage.setItem('subcategoryTitle', subcategory.title);
-    localStorage.setItem('subcategoryDescription', subcategory.description); // Ensure 'description' exists in your data
-    localStorage.setItem('subcategoryPrice', subcategory.price);
+    // Get the selected color based on the checked radio button
+    const selectedColorValue = document.querySelector(
+      `input[name="color-${categoryIndex}-${subcategoryIndex}"]:checked`
+    )?.value; // Get the value of the selected color
+
+    // Find the selected color object from the subcategory
+    const selectedColor = subcategory.colors.find(color => color.color === selectedColorValue);
+
+    if (!selectedColor) {
+      alert('Selected color not found.');
+      return;
+    }
+
+    // Create an object to represent the selected frame
+    const selectedFrame = {
+      categoryIndex,
+      subcategoryIndex,
+      selectedColor: selectedColor.color,
+    };
+
+    // Retrieve existing frames from localStorage, or initialize an empty array
+    const storedFrames = JSON.parse(localStorage.getItem('frames')) || [];
+
+    // Add the new frame to the stored frames array
+    storedFrames.push(selectedFrame);
+
+    // Save the updated array back to localStorage
+    localStorage.setItem('frames', JSON.stringify(storedFrames));
 
     // Redirect to the details page
-    window.location.href = `frame-details.html?category=${categoryIndex}&subcategory=${subcategoryIndex}`;
+    window.location.href = `frame-details.html?category=${categoryIndex}&subcategory=${subcategoryIndex}&color=${selectedColor.color}`;
+
   });
 });
 });

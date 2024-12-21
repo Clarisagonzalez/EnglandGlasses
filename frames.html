@@ -16,52 +16,64 @@
       font-family: 'Poppins', sans-serif;
     }
     
-    /* Main Content Styling */
-    .main-content {
-      margin-left: 250px; /* Adjust for sidebar width */
-      padding: 20px;
-    }
+    .text-center {
+    text-align: center;  /* Centers the text horizontally */
+}
 
-    /* Frame Cards Styling */
-    .frames-container .card {
-      border: none;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-      border-radius: 10px;
-      margin-bottom: 20px;
-    }
 
-    .frames-container .card img {
-      width: 100%;
-      height: auto;
-      border-top-left-radius: 10px;
-      border-top-right-radius: 10px;
-    }
+.frames-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* Space between cards */
+  justify-content: space-between; /* Spread the cards evenly */
+}
 
-    .frames-container .card-body {
-      text-align: center;
-    }
+.frames-container .card {
+  width: 30%; /* 3 cards per row (adjust as needed) */
+  box-sizing: border-box; /* Include padding/border in width */
+  background-color: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+}
 
-    .frames-container .card-title {
-      font-size: 18px;
-      font-weight: bold;
-    }
+.frames-container .card:hover {
+  transform: scale(1.05); /* Add a hover effect */
+}
 
-    .frames-container .card-text {
-      font-size: 16px;
-      color: #555;
-    }
+.frames-container .card img {
+  width: 100%;
+  height: auto;
+}
 
-    .frames-container .btn {
-      background-color: #343a40;
-      color: white;
-      border-radius: 5px;
-      padding: 10px 20px;
-      font-size: 14px;
-    }
+.frames-container .card-body {
+  padding: 10px;
+  text-align: center;
+}
 
-    .frames-container .btn:hover {
-      background-color: #495057;
-    }
+.frames-container .card-title {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.frames-container .card-text {
+  font-size: 16px;
+  color: #555;
+}
+
+.frames-container .btn {
+  background-color: #343a40;
+  color: white;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.frames-container .btn:hover {
+  background-color: #495057;
+}
     .back-btn {
    display: inline-block;
    padding: 10px 20px;
@@ -105,7 +117,7 @@
 <div class="main-content">
   <div class="container py-5">
     <h3 class="text-center mb-4">Frames Selection</h3>
-    <div class="row frames-container">
+    <div class=" row frames-container">
       <!-- Dynamic frame cards will be injected here by JavaScript -->
     </div>
     <div id="frame-details" style="display: none;"></div>
