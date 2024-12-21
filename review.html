@@ -9,99 +9,80 @@
     <link rel="stylesheet" href="css/styles.css">
     <style>
         /* Review Page Section */
-.review-container {
-  display: flex;
-  max-width: 1200px;
-  margin: 40px auto;
-  gap: 20px;
-  justify-content: space-between;
-}
+        .review-container {
+            display: flex;
+            max-width: 1200px;
+            margin: 40px auto;
+            gap: 20px;
+            justify-content: space-between;
+        }
 
-/* Left Section: Product Image */
-.product-section {
-  flex: 1 1 25%;
-  max-width: 300px;
-}
+        .product-section {
+            flex: 1 1 25%;
+            max-width: 300px;
+        }
 
-.product-image {
-  width: 100%;
-  height: auto;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
+        .product-image {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
 
-.product-title {
-  margin-top: 20px;
-  font-size: 1.8rem;
-  font-weight: 600;
-  text-align: center;
-}
+        .product-title {
+            margin-top: 20px;
+            font-size: 1.8rem;
+            font-weight: 600;
+            text-align: center;
+        }
 
-/* Right Section: Review Details */
-.review-section {
-  flex: 1 1 75%;
-  max-width: 800px;
-}
+        .review-section {
+            flex: 1 1 75%;
+            max-width: 800px;
+        }
 
-.review-section h2 {
-  font-size: 2rem;
-  color: #060644;
-  margin-bottom: 20px;
-}
+        .review-section h2 {
+            font-size: 2rem;
+            color: #060644;
+            margin-bottom: 20px;
+        }
 
-.review-details p {
-  font-size: 1.2rem;
-  margin: 10px 0;
-  color: #444;
-}
+        .review-details p {
+            font-size: 1.2rem;
+            margin: 10px 0;
+            color: #444;
+        }
 
-.review-details ul {
-  list-style-type: none;
-  margin-left: 20px;
-}
+        .add-to-cart-btn {
+            background-color: #060644;
+            color: #fff;
+            font-size: 1.2rem;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
 
-.review-details li {
-  font-size: 1rem;
-  color: #555;
-}
+        .add-to-cart-btn:hover {
+            background-color: #2a2a72;
+        }
 
-.add-to-cart-btn {
-  background-color: #060644;
-  color: #fff;
-  font-size: 1.2rem;
-  padding: 12px 20px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  margin-top: 20px;
-  transition: background-color 0.3s;
-}
+        @media (max-width: 768px) {
+            .review-container {
+                flex-direction: column;
+                align-items: center;
+            }
 
-.add-to-cart-btn:hover {
-  background-color: #2a2a72;
-}
-/* Responsive Design */
-@media (max-width: 768px) {
-  .review-container {
-    flex-direction: column;
-    align-items: center;
-  }
+            .product-title {
+                font-size: 1.6rem;
+            }
 
-  .product-section,
-  .review-section {
-    flex: 1 1 100%;
-    max-width: 100%;
-  }
-
-  .product-title {
-    font-size: 1.6rem;
-  }
-
-  .review-section h2 {
-    font-size: 1.8rem;
-  }
-}
-
+            .review-section h2 {
+                font-size: 1.8rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -114,40 +95,32 @@
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="frames.html">Shop</a></li>
-                    <li><a href="#">Cart</a></li>
+                    <li><a href="cart.html">Cart</a></li>
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <!-- Review Page Section -->
     <div class="review-container">
-        <!-- Left Section: Product Image and Title -->
         <div class="product-section">
             <img src="" alt="Product Image" id="product-image" class="product-image">
             <h1 id="product-title" class="product-title"></h1>
         </div>
-
-        <!-- Right Section: Review Details -->
         <div class="review-section">
             <h2>Order Review</h2>
             <div class="review-details">
                 <p><strong>Prescription Details:</strong></p>
-                <ul id="prescription-details" class="prescription-details">
-                    <!-- Prescription details will be inserted dynamically -->
+                <ul>
                     <li><strong>Right Eye (OD):</strong> <span id="sph-od-display"></span> Sph, <span id="cyl-od-display"></span> Cyl, Axis: <span id="axis-od-display"></span>, PD: <span id="pd-od-display"></span></li>
                     <li><strong>Left Eye (OS):</strong> <span id="sph-os-display"></span> Sph, <span id="cyl-os-display"></span> Cyl, Axis: <span id="axis-os-display"></span>, PD: <span id="pd-os-display"></span></li>
                 </ul>
-
-                <p><strong>Subtotal: </strong><span id="subtotal"></span></p>
+                <p><strong>Subtotal:</strong> <span id="subtotal"></span></p>
             </div>
-
             <button class="add-to-cart-btn" id="add-to-cart-btn">Add to Cart</button>
         </div>
     </div>
 
-    <!-- Footer -->
     <footer style="background-color: #060644; color: #ffffff; padding: 20px 0; text-align: center; position: fixed; bottom: 0; left: 0; width: 100%; z-index: 5;">
         <p>&copy; 2024 Your Company | All rights reserved.</p>
         <p><a href="contact.html" style="color: #ffffff; text-decoration: none;">Contact Us</a></p>
@@ -156,3 +129,4 @@
     <script src="js/review.js"></script>
 </body>
 </html>
+
