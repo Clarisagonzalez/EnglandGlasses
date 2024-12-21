@@ -561,9 +561,17 @@ document.addEventListener('DOMContentLoaded', function () {
     localStorage.setItem("prescription", JSON.stringify(prescription));
     console.log("Prescription saved to localStorage:", prescription);
 
-    // Optionally, you could redirect to the next page here
-    window.location.href = 'review.html'; // Redirect to the review page
-  }
+     // Save product details to localStorage
+     localStorage.setItem("productImage", frameDetails.src);
+     localStorage.setItem("subcategoryTitle", frameDetails.title);
+     localStorage.setItem("subcategoryPrice", frameDetails.price);
+ 
+     console.log("Product details saved to localStorage:", frameDetails);
+ 
 
-  // Add event listener to the form submit
-  document.getElementById("prescriptionForm").addEventListener("submit", savePrescription);
+   // Redirect to the review page
+   window.location.href = 'review.html';
+}
+
+// Add event listener to the form submit
+document.getElementById("prescriptionForm").addEventListener("submit", savePrescription);
