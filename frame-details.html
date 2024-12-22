@@ -12,31 +12,28 @@
     <style>
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: #f0f0ea;
-            color: #363d46;
+            background-color: #F0F0EA;
+            color: #363D46;
             margin-bottom: 100px; /* To prevent footer overlap */
             line-height: 1.6; /* Increased line-height for better readability */
         }
-    
         h2 {
             text-align: center;
             color: #060644;
             margin-bottom: 30px; /* Space below heading */
             font-size: 32px;
         }
-    
         .frame-image-card {
             display: flex;
             justify-content: center;
             align-items: center;
             margin-bottom: 40px;
             position: relative;
-            background-color: #f0f0ea;
+            background-color: #F0F0EA;
             padding: 30px; /* Added padding for better alignment */
             border-radius: 8px; /* Added rounded corners */
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Added shadow for depth */
         }
-    
         .frame-image-container img {
             max-width: 80%;
             height: auto;
@@ -45,46 +42,39 @@
             border-radius: 8px; /* Added rounded corners to image */
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Light shadow around image */
         }
-    
         .frame-description-container {
             margin: 20px 0;
             padding: 20px; /* Increased padding for more room */
-            background-color: #ffffff;
+            background-color: #FFFFFF;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             border-radius: 10px;
         }
-    
         .frame-description {
             font-size: 16px;
             color: #555;
             line-height: 1.6; /* Increased line-height for better readability */
         }
-    
         .prescription-form-container {
-            background-color: #ffffff;
+            background-color: #FFFFFF;
             padding: 30px; /* Increased padding for more space */
             border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             margin-top: 40px; /* More space before form */
         }
-    
         .prescription-chart {
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
         }
-    
         .prescription-chart th,
         .prescription-chart td {
             padding: 12px; /* Increased padding for table cells */
             border: 1px solid #ddd;
             text-align: center;
         }
-    
         .prescription-chart th {
-            background-color: #f4f4f4;
+            background-color: #F4F4F4;
         }
-    
         .form-control {
             width: 100%;
             padding: 12px; /* Increased padding for better user experience */
@@ -94,10 +84,9 @@
             border: 1px solid #ccc;
             font-size: 16px; /* Ensured font is readable */
         }
-    
         button[type="submit"] {
             background-color: #060644;
-            color: #ffffff;
+            color: #FFFFFF;
             padding: 12px 25px; /* Increased padding for larger button */
             border-radius: 5px;
             border: none;
@@ -106,13 +95,11 @@
             font-size: 16px; /* Larger text for clarity */
             transition: background-color 0.3s ease; /* Smooth transition on hover */
         }
-    
         button[type="submit"]:hover {
-            background-color: #ceb290;
+            background-color: #CEB290;
         }
-    
         .next-btn {
-            background-color: #ceb290;
+            background-color: #CEB290;
             color: #060644;
             padding: 12px 25px; /* Increased padding for consistency with the main button */
             border-radius: 5px;
@@ -124,15 +111,13 @@
             font-size: 16px;
             transition: background-color 0.3s ease; /* Smooth transition on hover */
         }
-    
         .next-btn:hover {
             background-color: #060644;
             color: #fff;
         }
-    
         footer {
             background-color: #060644;
-            color: #ffffff;
+            color: #FFFFFF;
             padding: 20px 0;
             text-align: center;
             position: fixed;
@@ -141,70 +126,60 @@
             width: 100%;
             z-index: 10;
         }
-    
         footer a {
-            color: #ffffff;
+            color: #FFFFFF;
             text-decoration: none;
         }
-    
     </style>
-</head>
-<body>
-     <!-- Header Section -->
-     <header>
-        <div class="header-container">
-            <div class="logo">
-                <a href="#"><img src="images/logo2.png" alt="Your Logo"></a>
+    </head>
+    <body>
+         <!-- Header Section -->
+         <header>
+            <div class="header-container">
+                <div class="logo">
+                    <a href="#"><img src="images/logo2.png" alt="Your Logo"></a>
+                </div>
+                <nav class="navigation">
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="frames.html">Shop</a></li>
+                        <li><a href="#">Cart</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </nav>
             </div>
-            <nav class="navigation">
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="frames.html">Shop</a></li>
-                    <li><a href="#">Cart</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
-    <div class="container">
-        <div class="frame-image-card">
-            <!-- Frame image container -->
-            <div class="frame-image-container">
-                <img id="frame-image" > <!-- This will be dynamically inserted -->
+        </header>
+        <div class="container">
+            <div class="frame-image-card">
+                <!-- Frame image container -->
+                <div class="frame-image-container">
+                    <img id="frame-image" > <!-- This will be dynamically inserted -->
+                </div>
             </div>
-        </div>
-    
-        <!-- Frame Title -->
-        <h1 id="frame-title"></h1>
-    
-        <!-- Frame Description -->
-        <div class="frame-description-container">
-            <p id="frame-description">
-                <!-- Description will be dynamically inserted -->
-            </p>
-        </div>
-    
-        <!-- Frame Price -->
-        <div class="frame-price-container">
-            <p id="frame-price">
-                <!-- Price will be dynamically inserted -->
-            </p>
-        </div>
-    
-        <!-- Frame Color -->
-        <div class="frame-color-container">
-            <p id="frame-color">
-                <!-- Color will be dynamically inserted -->
-            </p>
-        </div>
-    
-        <!-- Color Selector -->
-        <div class="color-selector">
-    
-        </div>
-
-        <!-- Prescription Form -->
+            <!-- Frame Title -->
+            <h1 id="frame-title"></h1>
+            <!-- Frame Description -->
+            <div class="frame-description-container">
+                <p id="frame-description">
+                    <!-- Description will be dynamically inserted -->
+                </p>
+            </div>
+            <!-- Frame Price -->
+            <div class="frame-price-container">
+                <p id="frame-price">
+                    <!-- Price will be dynamically inserted -->
+                </p>
+            </div>
+            <!-- Frame Color -->
+            <div class="frame-color-container">
+                <p id="frame-color">
+                    <!-- Color will be dynamically inserted -->
+                </p>
+            </div>
+            <!-- Color Selector -->
+            <div class="color-selector">
+            </div>
+            <!-- Prescription Form -->
         <div class="prescription-form-container">
             <h3>Enter Prescription Details</h3>
             <form id="prescriptionForm">
@@ -244,7 +219,6 @@
                         <option value="-1.50">-1.50</option>
                         <option value="-1.00">-1.00</option>
                         <option value="-0.50">-0.50</option>
-                        
                         <option value="0.50">+0.50</option>
                         <option value="1.00">+1.00</option>
                         <option value="1.50">+1.50</option>
@@ -331,7 +305,6 @@
                                     <option value="-1.50">-1.50</option>
                                     <option value="-1.00">-1.00</option>
                                     <option value="-0.50">-0.50</option>
-                    
                                     <option value="0.50">+0.50</option>
                                     <option value="1.00">+1.00</option>
                                     <option value="1.50">+1.50</option>
@@ -364,7 +337,6 @@
                         <option value="-4.00">-4.00</option>
                         <option value="-4.50">-4.50</option>
                         <option value="-5.00">-5.00</option>
-                                
                                 </select>
                             </td>
                             <td>
@@ -388,7 +360,6 @@
                                     <option value="160">160°</option>
                                     <option value="170">170°</option>
                                     <option value="180">180°</option>
-                                    
                                 </select>
                             </td>
                             <td>
@@ -399,22 +370,31 @@
                 </table>
                 <button type="submit" class="btn btn-primary mt-2">Save</button>
             </form>
-
-            <!-- Next Button to Review Page -->
-            <div class="form-group" style="text-align: center; margin-top: 20px;">
-                <a href="review.html" class="next-btn">Next</a>
-            </div>
-        </div>
-    </div>
-
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2024 Your Company | All rights reserved.</p>
-        <p><a href="contact.html">Contact Us</a></p>
-    </footer>
-
-    <script src="js/frames-details.js"></script>
-    <script src="js/frames.js"></script>
-    <script src="js/review.js"></script>
+<!-- Next Button to Review Page -->
+<div class="form-group" style="text-align: center; margin-top: 20px;">
+    <a href="review.html" class="next-btn">Next</a>
+</div>
+</div>
+</div>
+<!-- Footer -->
+<footer>
+<p>&copy; 2024 Your Company | All rights reserved.</p>
+<p><a href="contact.html">Contact Us</a></p>
+</footer>
+<script src="js/frames-details.js"></script>
+<script src="js/frames.js"></script>
+<script src="js/review.js"></script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
