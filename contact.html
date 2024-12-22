@@ -16,7 +16,7 @@
         justify-content: center; /* Center items vertically */
         min-height: 100vh; /* Full viewport height */
         padding: 20px; /* Add some padding for spacing */
-        background-color: #f0f0ea;
+        background-color: #white;
         }
 
         .contact-page header {
@@ -34,10 +34,6 @@
         padding: 30px;
         border-radius: 10px;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .contact-page .heading-with-images {
-        text-align: center;
         }
 
         .contact-page form {
@@ -62,50 +58,8 @@
         text-align: center;
         }
 
-        nav {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 200px;
-        height: 100%;
-        background-color: #060644;
-        color: #f0f0ea;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 20px;
-        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-        text-align: left;
-        }
-
-        nav ul {
-        list-style-type: none;
-        padding: 0;
-        margin: 0;
-        width: 100%;
-        }
-
-        nav ul li {
-        margin-bottom: 15px;
-        }
-
-        nav ul li a {
-        display: block;
-        text-decoration: none;
-        color: #f0f0ea;
-        font-weight: bold;
-        padding: 10px;
-        border-radius: 5px;
-        transition: background-color 0.3s ease;
-        }
-
-        nav ul li a:hover {
-        background-color: #ccc;
-        color: #060644;
-        }
-
         body {
-        margin-left: 200px; /* Adjust body content to not overlap with nav */
+        align: center; /* Adjust body content to not overlap with nav */
         }
 
         .heading-with-images {
@@ -154,7 +108,7 @@
         }
 
         #contact-form button {
-        align-self: flex-start; /* Align the button with the form fields */
+        align-self: center; /* Align the button with the form fields */
         padding: 10px 20px; /* Add padding to the button */
         font-size: 16px; /* Match button font size with inputs */
         }
@@ -162,19 +116,10 @@
     </style>
 </head>
 <body class="contact-page">
-    <header>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="frames.html">Frames</a></li>
-                <li><a href="cart/cart.html">Cart</a></li>
-            </ul>
-        </nav>
-    </header>
+    <img class = "contact-header" src = images/contact.png >
     <main class="container my-5">
         <div class="text-center mb-4">
             <div class="heading-with-images">
-                <img src="images/contact.png" alt="England Glasses" class="heading-image">
                 <p class="lead">Please fill out the form below and we will get in touch with you shortly.<br><small class="text-muted">* indicates a required field</small></p>
             </div>
         </div>
@@ -201,12 +146,6 @@
                     Thank you, you will hear from us soon!
                 </div>
             </div>
-
-            <div class="col-md-4">
-                <h2>Our Contact Information</h2>
-                <p><strong>Email:</strong> <a href="mailto:englandglasses@gmail.com">englandglasses@gmail.com</a></p>
-            </div>
-        </div>
     </main>
 
     <footer class="bg-light text-center py-4">
