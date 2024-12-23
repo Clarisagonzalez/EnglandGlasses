@@ -13,7 +13,28 @@
             background-color: #f5f5f5;
             margin: 0;
         }
+        .breadcrumb {
+            margin-bottom: 20px;
+        }
 
+        .back-link {
+            display: inline-block;
+            background-color: #060644;
+            color: #ffffff;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .back-link:hover {
+            background-color: #333333;
+            color: #ffffff;
+        }
+    
         .review-container {
             display: flex;
             max-width: 1200px;
@@ -24,7 +45,7 @@
             border-radius: 8px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
         }
-
+    
         .product-section {
             flex: 1 1 30%;
             display: flex;
@@ -33,7 +54,7 @@
             border-right: 1px solid #ddd;
             padding-right: 20px;
         }
-
+    
         .product-image {
             width: 100%;
             height: auto;
@@ -42,47 +63,72 @@
             margin-bottom: 20px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
-
+    
         .product-title {
             font-size: 1.5rem;
             font-weight: 600;
             text-align: center;
         }
-
+    
         .review-section {
             flex: 1 1 70%;
             padding: 20px;
         }
-
+    
         .review-section h2 {
             font-size: 1.8rem;
             color: #333;
             margin-bottom: 20px;
         }
-
-        .review-details ul {
-            list-style-type: none;
-            padding: 0;
+    
+        .review-details {
+            margin-top: 20px;
+            width: 100%;
+            border-collapse: collapse;
+        }
+    
+        .review-details table {
+            width: 100%;
             margin: 0;
+            border-collapse: collapse;
         }
-
-        .review-details li {
+    
+        .review-details th, 
+        .review-details td {
+            text-align: left;
+            padding: 12px;
             font-size: 1rem;
-            margin: 10px 0;
             color: #555;
+            border: 1px solid #ddd;
         }
-
-        .review-details li strong {
+    
+        .review-details th {
+            background-color: #f0e1d5;
             color: #333;
+            font-weight: bold;
+            padding: 10px;
         }
-
+    
+        .review-details tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+    
+        .review-details tbody tr:nth-child(odd) {
+            background-color: #ffffff;
+        }
+    
+        .review-details tbody tr:hover {
+            background-color: #f0f0f0;
+        }
+    
         .subtotal {
             margin-top: 20px;
             font-size: 1.2rem;
-            font-weight: 600;
+            font-weight: bold;
             color: #000;
+            text-align: right;
         }
-
+    
         .add-to-cart-btn {
             background-color: #060644;
             color: #fff;
@@ -92,58 +138,63 @@
             border-radius: 8px;
             cursor: pointer;
             transition: background-color 0.3s ease;
+            margin-top: 20px;
+            align-self: flex-end;
         }
-
+    
         .add-to-cart-btn:hover {
             background-color: #333;
         }
-
+    
         .help-section {
             margin-top: 20px;
             font-size: 0.9rem;
             color: #777;
         }
-
+    
         .help-section a {
             color: #060644;
             font-weight: bold;
             text-decoration: none;
         }
-
+    
         .help-section a:hover {
             text-decoration: underline;
         }
-
+    
         footer {
             background-color: #060644;
             color: #FFFFFF;
-        text-align: center;
-        padding: 20px 0;
-        width: 100%;
-        margin-top: auto;
+            text-align: center;
+            padding: 20px 0;
+            width: 100%;
+            margin-top: auto;
+            font-size: 0.9rem;
+            line-height: 1.5;
         }
-
+    
         footer a {
             color: #ffffff;
             text-decoration: none;
         }
-
+    
         footer a:hover {
             text-decoration: underline;
         }
-
+    
         @media (max-width: 768px) {
             .review-container {
                 flex-direction: column;
                 padding: 10px;
             }
-
+    
             .product-section {
                 border-right: none;
                 padding: 0;
                 text-align: center;
             }
         }
+       
     </style>
 </head>
 <body>
@@ -163,17 +214,45 @@
     </div>
 </header>
 <div class="review-container">
+    <!-- Add Back to Edit Link -->
+    <div class="breadcrumb">
+        <button class="back-link" onclick="goBack()">&lt; Back</button>
+    </div>
     <div class="product-section">
         <img src="" alt="Product Image" id="product-image" class="product-image">
         <h1 id="product-title" class="product-title"></h1>
     </div>
     <div class="review-section">
-        <h2>Order Review</h2>
+        <h2>Review Your Selections</h2>
         <div class="review-details">
-            <ul>
-                <li><strong>Right Eye (OD):</strong> <span id="sph-od-display"></span> Sph, <span id="cyl-od-display"></span> Cyl, Axis: <span id="axis-od-display"></span>, PD: <span id="pd-od-display"></span></li>
-                <li><strong>Left Eye (OS):</strong> <span id="sph-os-display"></span> Sph, <span id="cyl-os-display"></span> Cyl, Axis: <span id="axis-os-display"></span>, PD: <span id="pd-os-display"></span></li>
-            </ul>
+            <table>
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>SPH</th>
+                        <th>CYL</th>
+                        <th>Axis</th>
+                        <th>PD</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Right Eye (OD):</strong></td>
+                        <td id="sph-od-display"></td>
+                        <td id="cyl-od-display"></td>
+                        <td id="axis-od-display"></td>
+                        <td id="pd-od-display"></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Left Eye (OS):</strong></td>
+                        <td id="sph-os-display"></td>
+                        <td id="cyl-os-display"></td>
+                        <td id="axis-os-display"></td>
+                        <td id="pd-os-display"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
             <p class="subtotal"><strong>Subtotal:</strong> <span id="subtotal"></span></p>
         </div>
         <button class="add-to-cart-btn" id="add-to-cart-btn">Add to Cart</button>
@@ -189,3 +268,13 @@
 <script src="js/review.js"></script>
 </body>
 </html>
+
+<script>
+    function goBack() {
+        if (document.referrer) {
+            window.history.back();
+        } else {
+            window.location.href = 'edit.html'; // Replace with the URL you want as the default fallback
+        }
+    }
+</script>
