@@ -524,6 +524,8 @@ categories.forEach((category, categoryIndex) => {
       )
       .join('');
 
+     
+
     // Subcategory HTML
     const subcategoryHTML = `
       <div class="card">
