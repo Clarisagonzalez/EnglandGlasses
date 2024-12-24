@@ -142,7 +142,7 @@ document.addEventListener('DOMContentLoaded', function () {
     },
     {
       category: 'Academic',
-      image: 'images/categories/Academic.jpg',
+      image: 'images/glasses/Academic/P2027 Red.jpg',
       subcategories: [
         {
           title: 'P2027',
@@ -408,7 +408,7 @@ document.addEventListener('DOMContentLoaded', function () {
     },
     {
           category: 'CEO',
-          image: 'images/categories/CEO.jpg',  
+          image: 'images/glasses/CEO/CEO Chloe Silver.jpg',  
           subcategories: [
             {
               title: 'CEO Abraham',
@@ -496,6 +496,8 @@ document.addEventListener('DOMContentLoaded', function () {
    const categoryHTML = `
      <div class="category mb-4 col-lg-4 col-md-6">
        <div class="category-card">
+       <!-- Image added here -->
+      <img src="${category.image}" alt="${category.category} image" class="category-image mb-3" />
          <button class="frame-btn w-100 text-left category-btn" data-category="${categoryIndex}">
            <h4 class="category-title">${category.category}</h4>
          </button>
@@ -584,6 +586,28 @@ document.addEventListener('DOMContentLoaded', function () {
      }
    });
  });
+ // Add event listeners for color selection change
+document.querySelectorAll('input[type="radio"][name^="color-"]').forEach((radio) => {
+  radio.addEventListener('change', function () {
+    const categoryId = this.name.split('-')[1]; // Extract category index
+    const subcategoryId = this.name.split('-')[2]; // Extract subcategory index
+    const selectedColorValue = this.value;
+
+    const category = categories[categoryId];
+    const subcategory = category.subcategories[subcategoryId];
+
+    // Find the corresponding color object from the subcategory
+    const selectedColor = subcategory.colors.find(color => color.color === selectedColorValue);
+
+    if (selectedColor) {
+      // Change the image based on the selected color
+      const imageElement = document.querySelector(`#frame-image-${categoryId}-${subcategoryId}`);
+      if (imageElement) {
+        imageElement.src = selectedColor.src; // Update the image source
+      }
+    }
+  });
+});
 
  // Add event listeners for "View Details" buttons after all content is injected
  document.querySelectorAll('.view-details-btn').forEach((button) => {

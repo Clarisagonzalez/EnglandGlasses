@@ -10,28 +10,6 @@ body {
   font-family: 'Poppins', sans-serif;
 }
   
-  .sidebar {
-    width: 200px;
-    height: 100vh;
-    position: fixed;
-    top: 0;
-    left: 0;
-    background-color: #333;
-    padding: 20px;
-  }
-  
-  .sidebar ul {
-    padding: 0;
-  }
-  
-  .sidebar li {
-    margin: 10px 0;
-  }
-  
-  .sidebar a {
-    text-decoration: none;
-    color: white;
-  }
   
   
   .hero-section {
@@ -39,56 +17,9 @@ body {
   }
   
   
-  @media (max-width: 768px) {
-    .card {
-      width: 48%;
-    }
-    .frames-container .card {
-      width: 45%; /* 2 cards per row */
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .card {
-      width: 100%;
-    }
-  }
-  @media (max-width: 576px) {
-    .frames-container .card {
-      width: 100%; /* 1 card per row */
-    }
-  }
-  
- 
-/* Style the category buttons */
-.category-btn {
-  background-color: #f1f1f1;
-  color: #333;
-  border: 1px solid #ddd;
-  padding: 10px;
-  font-size: 20px;
-  border-radius: 5px;
-  transition: all 0.3s ease;
-}
 
-.category-btn.active {
-  background-color: #060644;
-  color: white;
-  border-color: #060644;
-}
 
-.category-btn:hover {
-  background-color: #060644;
-  color: whitesmoke
-}
 
-/*.subcategories {
-  padding-left: 20px;
-}*/
-
-.card {
-  margin: 30px 0;
-}
 /* Header Styles */
 header {
   background-color: #fff; /* White background for cleanliness */
@@ -157,8 +88,69 @@ header {
     margin-top: 10px;
   }
 }
-.category-card.active {
-  border: 2px solid #060644;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  transform: scale(1.05);
+
+
+
+
+
+
+/* Media Queries for smaller screens */
+@media (max-width: 1024px) {
+  .frame-image-card {
+      max-width: 95%; /* Reduce the container width slightly on tablets */
+      padding: 15px; /* Slightly reduced padding */
+  }
+
+  .frame-image-container img {
+      max-width: 70%; /* Slightly smaller image on medium screens */
+  }
+}
+
+@media (max-width: 768px) {
+  .frame-image-card {
+      max-width: 100%; /* Full width on smaller screens */
+      padding: 10px; /* Reduce padding for better spacing */
+  }
+
+  .frame-image-container img {
+      max-width: 90%; /* Image fills a larger portion of the container */
+  }
+}
+
+@media (max-width: 480px) {
+  .frame-image-card {
+      padding: 8px; /* Even smaller padding on very small screens */
+      margin-bottom: 20px; /* Slightly reduced bottom margin */
+  }
+
+  .frame-image-container img {
+      max-width: 95%; /* Image will be even smaller on small screens */
+  }
+}
+
+/* Media queries for smaller screens */
+@media (max-width: 1200px) {
+  /* Adjust column layout for medium screens */
+  .category {
+    flex-basis: 50%; /* Two items per row on medium screens */
+  }
+}
+
+@media (max-width: 768px) {
+  /* Adjust column layout for smaller screens */
+  .category {
+    flex-basis: 100%; /* One item per row on small screens */
+    text-align: center; /* Center text for smaller devices */
+  }
+
+  /* Reduce category title font size for smaller screens */
+  .category-title {
+    font-size: 1.2rem;
+  }
+
+  /* Adjust the image to fit the smaller screen */
+  .category-image {
+    width: 100%;
+    height: auto;
+  }
 }

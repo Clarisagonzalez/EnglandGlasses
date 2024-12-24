@@ -14,7 +14,12 @@
   <style>
     body {
       font-family: 'Poppins', sans-serif;
+      height: 150vh;
     }
+    .main-content {
+  min-height: 100vh; /* Ensure the main content area is at least as tall as the viewport */
+  background-color: #f4f4f4;
+}
 
     .text-center {
       text-align: center;
@@ -41,14 +46,44 @@
       transform: scale(1.05);
     }
 
-    .frames-container .category .category-title {
+    .frames-container .category {
       padding: 10px;
       font-size: 18px;
       font-weight: bold;
       text-align: center;
       background-color: #f8f8f8;
-      border-top: 1px solid #ddd;
+
     }
+    .category-card {
+    position: relative;
+    background-color: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.category-image {
+    width: 100%; /* Ensures the image fills the width of the card */
+    height: auto; /* Maintains the image's aspect ratio */
+    border-radius: 8px;
+    object-fit: cover; /* Ensures the image covers the area while maintaining its aspect ratio */
+}
+
+.category-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    padding: 10px;
+      text-align: center;
+      background-color: #3c3f99;
+      border-radius: 5px;
+    
+}
+
+/* Optional: Add a hover effect for the card */
+.category-card:hover {
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
 
     .subcategories {
       display: none;
@@ -101,25 +136,27 @@
       background-color: #495057;
     }
 
-    .back-btn {
-      display: inline-block;
-      padding: 10px 20px;
-      background-color: #060644;
-      color: white;
-      text-decoration: none;
-      border-radius: 5px;
-      font-size: 16px;
-      transition: background-color 0.3s ease;
-      position: fixed;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 15;
-    }
+    @media (max-width: 480px) {
+  html, body {
+    height: 100%; /* Full height */
+    margin: 0;
+    overflow-y: auto; /* Allow scrolling */
+  }
 
-    .back-btn:hover {
-      background-color: #5049a0;
-    }
+  .main-content {
+    min-height: 140vh; /* Even taller content on very small screens */
+    padding: 10px;
+  }
+
+  .section {
+    height: 140vh; /* Make the section taller on very small screens */
+    background-color: #ddd;
+  }
+
+  .footer {
+    height: 70px; /* Increase footer height further */
+  }
+}
   </style>
 </head>
 
@@ -149,7 +186,6 @@
     </div>
   </div>
 
-  <a href="javascript:history.back()" class="back-btn">Back</a>
 
   <footer style="background-color: #060644; color: #ffffff; padding: 20px 0; text-align: center; position: fixed; bottom: 0; left: 0; width: 100%; z-index: 5;">
     <p>&copy; 2024 Your Company | All rights reserved.</p>
