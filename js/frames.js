@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const categories = [
     {
       category: 'A5.0',
+      image: "images/glasses/A5.0/A5.0 Burnt Orange.jpg",
       subcategories: [
         {
           title: 'A5.0',
@@ -141,6 +142,7 @@ document.addEventListener('DOMContentLoaded', function () {
     },
     {
       category: 'Academic',
+      image: "images/glasses/Academic/P2027 Red.jpg",
       subcategories: [
         {
           title: 'P2027',
@@ -406,6 +408,7 @@ document.addEventListener('DOMContentLoaded', function () {
     },
     {
           category: 'CEO',  
+          image: "images/glasses/CEO/CEO Abraham Gold.jpg",
           subcategories: [
             {
               title: 'CEO Abraham',
@@ -488,30 +491,36 @@ if (!framesContainer) {
   return; // Exit if framesContainer is not found
 }
 
-
-// Generate HTML for each category and its subcategories
 categories.forEach((category, categoryIndex) => {
-  // Generate HTML for each category and its subcategories
+  // Generate category HTML
   const categoryHTML = `
-    <div class="category mb-4">
-      <button class="frame-btn w-100 text-left category-btn" data-category="${categoryIndex}">
-        ${category.category}
-      </button>
-      <div class="subcategories collapse mt-3" id="category-${categoryIndex}">
-        <!-- Subcategories will be added here dynamically -->
+    <div class="category mb-4 col-lg-4 col-md-6">
+      <div class="category-card">
+        <button class="frame-btn w-100 text-left category-btn" data-category="${categoryIndex}">
+          <div class="category-card-img">
+            <img src="${category.image}" alt="${category.category}" />
+          </div>
+          <h4 class="category-title">${category.category}</h4>
+        </button>
+        <!-- Subcategories container (Initially hidden) -->
+        <div class="subcategories collapse mt-3" id="category-${categoryIndex}">
+          <!-- Subcategories will be dynamically added here -->
+        </div>
       </div>
     </div>
   `;
+
+  // Insert category HTML
   framesContainer.insertAdjacentHTML('beforeend', categoryHTML);
 
-  // Subcategories container
+  // Subcategories container for the current category
   const subcategoriesContainer = document.querySelector(`#category-${categoryIndex}`);
   if (!subcategoriesContainer) {
     console.error(`Subcategories container for category-${categoryIndex} not found!`);
-    return; // Exit if subcategoriesContainer is not found
+    return;
   }
 
-  // Generate HTML for each subcategory within the current category
+  // Generate HTML for each subcategory
   category.subcategories.forEach((subcat, subcatIndex) => {
     const colorOptionsHTML = subcat.colors
       .map(
@@ -523,8 +532,6 @@ categories.forEach((category, categoryIndex) => {
         `
       )
       .join('');
-
-     
 
     // Subcategory HTML
     const subcategoryHTML = `
@@ -543,22 +550,9 @@ categories.forEach((category, categoryIndex) => {
         </div>
       </div>
     `;
+    
+    // Insert subcategory HTML inside the subcategories container
     subcategoriesContainer.insertAdjacentHTML('beforeend', subcategoryHTML);
-
-    // Add event listeners for color selection
-    subcat.colors.forEach((color, colorIndex) => {
-      const colorRadio = document.querySelector(
-        `#color-${categoryIndex}-${subcatIndex}-${colorIndex}`
-      );
-      const imageElement = document.getElementById(
-        `frame-image-${categoryIndex}-${subcatIndex}`
-      );
-      colorRadio.addEventListener('change', function () {
-        if (this.checked) {
-          imageElement.src = color.src;
-        }
-      });
-    });
   });
 });
 
@@ -573,11 +567,23 @@ document.querySelectorAll('.category-btn').forEach((btn) => {
     // Add active class to the clicked button
     this.classList.add('active');
 
-    // Toggle the visibility of the subcategories for this category
+    // Toggle visibility of the subcategories for this category
     const categoryId = this.dataset.category;
     const subcategories = document.getElementById(`category-${categoryId}`);
+
+    // Hide all other subcategories
+    document.querySelectorAll('.subcategories').forEach((sub) => {
+      if (sub !== subcategories) {
+        sub.classList.remove('show');
+        sub.classList.add('collapse'); // Collapse other categories
+      }
+    });
+
+    // Toggle current category's subcategory visibility
     if (subcategories) {
-      subcategories.classList.toggle('collapse');
+      const isCollapsed = subcategories.classList.contains('collapse');
+      subcategories.classList.toggle('collapse', !isCollapsed);
+      subcategories.classList.toggle('show', isCollapsed);
     }
   });
 });
