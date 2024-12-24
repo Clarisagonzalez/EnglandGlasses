@@ -27,7 +27,7 @@
       justify-content: flex-start;
     }
 
-    .frames-container .card {
+    .frames-container .category {
       width: 30%;
       box-sizing: border-box;
       background-color: #fff;
@@ -37,31 +37,58 @@
       transition: transform 0.2s;
     }
 
-    .frames-container .card:hover {
+    .frames-container .category:hover {
       transform: scale(1.05);
     }
 
-    .frames-container .card img {
+    .frames-container .category .category-title {
+      padding: 10px;
+      font-size: 18px;
+      font-weight: bold;
+      text-align: center;
+      background-color: #f8f8f8;
+      border-top: 1px solid #ddd;
+    }
+
+    .subcategories {
+      display: none;
+      padding: 10px;
+      background-color: #f8f8f8;
+      border-top: 1px solid #ddd;
+    }
+
+    .subcategories.show {
+      display: block;
+    }
+
+    .subcategories .card {
+      margin-bottom: 15px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .subcategories .card img {
       width: 100%;
       height: auto;
     }
 
-    .frames-container .card-body {
+    .subcategories .card-body {
       padding: 10px;
       text-align: center;
     }
 
-    .frames-container .card-title {
-      font-size: 18px;
+    .subcategories .card-title {
+      font-size: 16px;
       font-weight: bold;
     }
 
-    .frames-container .card-text {
-      font-size: 16px;
+    .subcategories .card-text {
+      font-size: 14px;
       color: #555;
     }
 
-    .frames-container .btn {
+    .subcategories .btn {
       background-color: #343a40;
       color: white;
       border-radius: 5px;
@@ -70,7 +97,7 @@
       text-decoration: none;
     }
 
-    .frames-container .btn:hover {
+    .subcategories .btn:hover {
       background-color: #495057;
     }
 
@@ -93,106 +120,32 @@
     .back-btn:hover {
       background-color: #5049a0;
     }
-
-    .category-card {
-      background-color: #fff;
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      transition: transform 0.2s;
-      width: 100%;
-    }
-
-    .category-card:hover {
-      transform: scale(1.05);
-    }
-
-    .category-btn {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 10px;
-      background-color: #f8f8f8;
-      border: none;
-      border-radius: 10px;
-      width: 100%;
-      text-align: center;
-    }
-
-    .category-card-img img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-    }
-
-    .category-title {
-      font-size: 20px;
-      font-weight: bold;
-      padding: 10px 0;
-    }
-
-    .subcategories {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Adjust 250px as needed */
-  gap: 20px; /* Space between grid items */
-  padding: 20px; /* Add some padding around the grid */
-}
-
-.subcategories .card {
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Add some shadow */
-  border: 1px solid #ddd; /* Optional: Add a border */
-  border-radius: 8px; /* Optional: Add rounded corners */
-  overflow: hidden; /* Ensure content stays within the card */
-}
-
-.subcategories .card img {
-  max-width: 100%; /* Ensure images fit within the card */
-  height: auto; /* Maintain aspect ratio */
-}
-
-.subcategories .card-body {
-  text-align: center; /* Center align the text */
-  padding: 10px; /* Add padding inside the card body */
-}
-    @media (max-width: 992px) {
-      .category-card {
-        width: 100%;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .category-card {
-        width: 100%;
-      }
-    }
   </style>
 </head>
 
 <body>
   <header>
     <div class="header-container">
-        <div class="logo">
-            <a href="#"><img src="images/logo2.png" alt="Your Logo"></a>
-        </div>
-        <nav class="navigation">
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="frames.html">Shop</a></li>
-                <li><a href="cart.html">Cart</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
+      <div class="logo">
+        <a href="#"><img src="images/logo2.png" alt="Your Logo"></a>
+      </div>
+      <nav class="navigation">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="frames.html">Shop</a></li>
+          <li><a href="cart.html">Cart</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
     </div>
   </header>
 
   <div class="main-content">
     <div class="container py-5">
       <h3 class="text-center mb-4">Frames Selection</h3>
-      <div class="row frames-container">
-        <!-- Dynamic frame cards will be injected here by JavaScript -->
+      <div class="frames-container">
+        <!-- Dynamic content for categories and subcategories will be inserted here by frames.js -->
       </div>
-      <div id="frame-details" style="display: none;"></div>
     </div>
   </div>
 
@@ -211,4 +164,5 @@
   <!-- Link External JavaScript -->
   <script src="js/frames.js"></script>
 </body>
+
 </html>

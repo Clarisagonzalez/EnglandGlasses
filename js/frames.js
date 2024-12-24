@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const categories = [
     {
       category: 'A5.0',
-      image: "images/glasses/A5.0/A5.0 Burnt Orange.jpg",
+      image: 'images/glasses/A5.0/A5.0 Burnt Orange.jpg',
       subcategories: [
         {
           title: 'A5.0',
@@ -142,7 +142,7 @@ document.addEventListener('DOMContentLoaded', function () {
     },
     {
       category: 'Academic',
-      image: "images/glasses/Academic/P2027 Red.jpg",
+      image: 'images/categories/Academic.jpg',
       subcategories: [
         {
           title: 'P2027',
@@ -407,8 +407,8 @@ document.addEventListener('DOMContentLoaded', function () {
       ],
     },
     {
-          category: 'CEO',  
-          image: "images/glasses/CEO/CEO Abraham Gold.jpg",
+          category: 'CEO',
+          image: 'images/categories/CEO.jpg',  
           subcategories: [
             {
               title: 'CEO Abraham',
@@ -484,153 +484,149 @@ document.addEventListener('DOMContentLoaded', function () {
         },
       ];
 
-   // Select container for frames
-const framesContainer = document.querySelector('.frames-container');
-if (!framesContainer) {
-  console.error('Frames container not found in the DOM!');
-  return; // Exit if framesContainer is not found
-}
+ // Select container for frames
+ const framesContainer = document.querySelector('.frames-container');
+ if (!framesContainer) {
+   console.error('Frames container not found in the DOM!');
+   return; // Exit if framesContainer is not found
+ }
 
-categories.forEach((category, categoryIndex) => {
-  // Generate category HTML
-  const categoryHTML = `
-    <div class="category mb-4 col-lg-4 col-md-6">
-      <div class="category-card">
-        <button class="frame-btn w-100 text-left category-btn" data-category="${categoryIndex}">
-          <div class="category-card-img">
-            <img src="${category.image}" alt="${category.category}" />
-          </div>
-          <h4 class="category-title">${category.category}</h4>
-        </button>
-        <!-- Subcategories container (Initially hidden) -->
-        <div class="subcategories collapse mt-3" id="category-${categoryIndex}">
-          <!-- Subcategories will be dynamically added here -->
-        </div>
-      </div>
-    </div>
-  `;
+ categories.forEach((category, categoryIndex) => {
+   // Generate category HTML
+   const categoryHTML = `
+     <div class="category mb-4 col-lg-4 col-md-6">
+       <div class="category-card">
+         <button class="frame-btn w-100 text-left category-btn" data-category="${categoryIndex}">
+           <h4 class="category-title">${category.category}</h4>
+         </button>
+         <!-- Subcategories container (Initially hidden) -->
+         <div class="subcategories collapse mt-3" id="category-${categoryIndex}">
+           <!-- Subcategories will be dynamically added here -->
+         </div>
+       </div>
+     </div>
+   `;
 
-  // Insert category HTML
-  framesContainer.insertAdjacentHTML('beforeend', categoryHTML);
+   // Insert category HTML
+   framesContainer.insertAdjacentHTML('beforeend', categoryHTML);
 
-  // Subcategories container for the current category
-  const subcategoriesContainer = document.querySelector(`#category-${categoryIndex}`);
-  if (!subcategoriesContainer) {
-    console.error(`Subcategories container for category-${categoryIndex} not found!`);
-    return;
-  }
+   // Subcategories container for the current category
+   const subcategoriesContainer = document.querySelector(`#category-${categoryIndex}`);
+   if (!subcategoriesContainer) {
+     console.error(`Subcategories container for category-${categoryIndex} not found!`);
+     return;
+   }
 
-  // Generate HTML for each subcategory
-  category.subcategories.forEach((subcat, subcatIndex) => {
-    const colorOptionsHTML = subcat.colors
-      .map(
-        (color, colorIndex) => `
-          <input type="radio" id="color-${categoryIndex}-${subcatIndex}-${colorIndex}" 
-                 name="color-${categoryIndex}-${subcatIndex}" value="${color.color}" 
-                 ${colorIndex === 0 ? 'checked' : ''}>
-          <label for="color-${categoryIndex}-${subcatIndex}-${colorIndex}">${color.color}</label>
-        `
-      )
-      .join('');
+   // Generate HTML for each subcategory
+   category.subcategories.forEach((subcat, subcatIndex) => {
+     const colorOptionsHTML = subcat.colors
+       .map(
+         (color, colorIndex) => `
+           <input type="radio" id="color-${categoryIndex}-${subcatIndex}-${colorIndex}" 
+                  name="color-${categoryIndex}-${subcatIndex}" value="${color.color}" 
+                  ${colorIndex === 0 ? 'checked' : ''}>
+           <label for="color-${categoryIndex}-${subcatIndex}-${colorIndex}">${color.color}</label>
+         `
+       )
+       .join('');
 
-    // Subcategory HTML
-    const subcategoryHTML = `
-      <div class="card">
-        <img id="frame-image-${categoryIndex}-${subcatIndex}" src="${subcat.colors[0].src}" 
-             class="card-img-top" alt="${subcat.title}">
-        <div class="card-body">
-          <h5 class="card-title">${subcat.title}</h5>
-          <p class="card-text">${subcat.price}</p>
-          <div>
-            <label>Choose Color:</label><br>
-            ${colorOptionsHTML}
-          </div>
-          <a href="#" class="btn btn-primary mt-2 view-details-btn" 
-             data-category="${categoryIndex}" data-subcategory="${subcatIndex}">View Details</a>
-        </div>
-      </div>
-    `;
-    
-    // Insert subcategory HTML inside the subcategories container
-    subcategoriesContainer.insertAdjacentHTML('beforeend', subcategoryHTML);
-  });
-});
+     // Subcategory HTML
+     const subcategoryHTML = `
+       <div class="card">
+         <img id="frame-image-${categoryIndex}-${subcatIndex}" src="${subcat.colors[0].src}" 
+              class="card-img-top" alt="${subcat.title}">
+         <div class="card-body">
+           <h5 class="card-title">${subcat.title}</h5>
+           <p class="card-text">${subcat.price}</p>
+           <div>
+             <label>Choose Color:</label><br>
+             ${colorOptionsHTML}
+           </div>
+           <a href="#" class="btn btn-primary mt-2 view-details-btn" 
+              data-category="${categoryIndex}" data-subcategory="${subcatIndex}">View Details</a>
+         </div>
+       </div>
+     `;
 
-// Add event listeners for category buttons after all content is injected
-document.querySelectorAll('.category-btn').forEach((btn) => {
-  btn.addEventListener('click', function () {
-    // Remove active class from all buttons
-    document.querySelectorAll('.category-btn').forEach((btn) => {
-      btn.classList.remove('active');
-    });
+     // Insert subcategory HTML inside the subcategories container
+     subcategoriesContainer.insertAdjacentHTML('beforeend', subcategoryHTML);
+   });
+ });
 
-    // Add active class to the clicked button
-    this.classList.add('active');
+ // Add event listeners for category buttons after all content is injected
+ document.querySelectorAll('.category-btn').forEach((btn) => {
+   btn.addEventListener('click', function () {
+     // Remove active class from all buttons
+     document.querySelectorAll('.category-btn').forEach((btn) => {
+       btn.classList.remove('active');
+     });
 
-    // Toggle visibility of the subcategories for this category
-    const categoryId = this.dataset.category;
-    const subcategories = document.getElementById(`category-${categoryId}`);
+     // Add active class to the clicked button
+     this.classList.add('active');
 
-    // Hide all other subcategories
-    document.querySelectorAll('.subcategories').forEach((sub) => {
-      if (sub !== subcategories) {
-        sub.classList.remove('show');
-        sub.classList.add('collapse'); // Collapse other categories
-      }
-    });
+     // Toggle visibility of the subcategories for this category
+     const categoryId = this.dataset.category;
+     const subcategories = document.getElementById(`category-${categoryId}`);
 
-    // Toggle current category's subcategory visibility
-    if (subcategories) {
-      const isCollapsed = subcategories.classList.contains('collapse');
-      subcategories.classList.toggle('collapse', !isCollapsed);
-      subcategories.classList.toggle('show', isCollapsed);
-    }
-  });
-});
+     // Hide all other subcategories
+     document.querySelectorAll('.subcategories').forEach((sub) => {
+       if (sub !== subcategories) {
+         sub.classList.remove('show');
+         sub.classList.add('collapse'); // Collapse other categories
+       }
+     });
 
-// Add event listeners for "View Details" buttons after all content is injected
-document.querySelectorAll('.view-details-btn').forEach((button) => {
-  button.addEventListener('click', function (event) {
-    event.preventDefault(); // Stop the default behavior
-    const categoryIndex = button.getAttribute('data-category');
-    const subcategoryIndex = button.getAttribute('data-subcategory');
+     // Toggle current category's subcategory visibility
+     if (subcategories) {
+       const isCollapsed = subcategories.classList.contains('collapse');
+       subcategories.classList.toggle('collapse', !isCollapsed);
+       subcategories.classList.toggle('show', isCollapsed);
+     }
+   });
+ });
 
-    // Retrieve category and subcategory details
-    const category = categories[categoryIndex];
-    const subcategory = category.subcategories[subcategoryIndex];
+ // Add event listeners for "View Details" buttons after all content is injected
+ document.querySelectorAll('.view-details-btn').forEach((button) => {
+   button.addEventListener('click', function (event) {
+     event.preventDefault(); // Stop the default behavior
+     const categoryIndex = button.getAttribute('data-category');
+     const subcategoryIndex = button.getAttribute('data-subcategory');
 
-    // Get the selected color based on the checked radio button
-    const selectedColorValue = document.querySelector(
-      `input[name="color-${categoryIndex}-${subcategoryIndex}"]:checked`
-    )?.value; // Get the value of the selected color
+     // Retrieve category and subcategory details
+     const category = categories[categoryIndex];
+     const subcategory = category.subcategories[subcategoryIndex];
 
-    // Find the selected color object from the subcategory
-    const selectedColor = subcategory.colors.find(color => color.color === selectedColorValue);
+     // Get the selected color based on the checked radio button
+     const selectedColorValue = document.querySelector(
+       `input[name="color-${categoryIndex}-${subcategoryIndex}"]:checked`
+     )?.value; // Get the value of the selected color
 
-    if (!selectedColor) {
-      alert('Selected color not found.');
-      return;
-    }
+     // Find the selected color object from the subcategory
+     const selectedColor = subcategory.colors.find(color => color.color === selectedColorValue);
 
-    // Create an object to represent the selected frame
-    const selectedFrame = {
-      categoryIndex,
-      subcategoryIndex,
-      selectedColor: selectedColor.color,
-    };
+     if (!selectedColor) {
+       alert('Selected color not found.');
+       return;
+     }
 
-    // Retrieve existing frames from localStorage, or initialize an empty array
-    const storedFrames = JSON.parse(localStorage.getItem('frames')) || [];
+     // Create an object to represent the selected frame
+     const selectedFrame = {
+       categoryIndex,
+       subcategoryIndex,
+       selectedColor: selectedColor.color,
+     };
 
-    // Add the new frame to the stored frames array
-    storedFrames.push(selectedFrame);
+     // Retrieve existing frames from localStorage, or initialize an empty array
+     const storedFrames = JSON.parse(localStorage.getItem('frames')) || [];
 
-    // Save the updated array back to localStorage
-    localStorage.setItem('frames', JSON.stringify(storedFrames));
+     // Add the new frame to the stored frames array
+     storedFrames.push(selectedFrame);
 
-    // Redirect to the details page
-    window.location.href = `frame-details.html?category=${categoryIndex}&subcategory=${subcategoryIndex}&color=${selectedColor.color}`;
+     // Save the updated array back to localStorage
+     localStorage.setItem('frames', JSON.stringify(storedFrames));
 
-  });
-});
+     // Redirect to the details page
+     window.location.href = `frame-details.html?category=${categoryIndex}&subcategory=${subcategoryIndex}&color=${selectedColor.color}`;
+   });
+ });
 });
