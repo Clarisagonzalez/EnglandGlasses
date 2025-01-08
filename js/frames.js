@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
+  console.log('Document is fully loaded.');
   // Define categories and subcategories
   const categories = [
     {
@@ -486,6 +487,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
  // Select container for frames
  const framesContainer = document.querySelector('.frames-container');
+ console.log('Frames container selected:', framesContainer);
  if (!framesContainer) {
    console.error('Frames container not found in the DOM!');
    return; // Exit if framesContainer is not found
