@@ -487,10 +487,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
  // Select container for frames
  const framesContainer = document.querySelector('.frames-container');
- console.log('Frames container selected:', framesContainer);
  if (!framesContainer) {
-   console.error('Frames container not found in the DOM!');
-   return; // Exit if framesContainer is not found
+     console.error('Frames container not found in the DOM!');
+     return;
  }
 
  categories.forEach((category, categoryIndex) => {
