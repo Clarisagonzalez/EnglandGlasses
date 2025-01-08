@@ -609,48 +609,57 @@ document.querySelectorAll('input[type="radio"][name^="color-"]').forEach((radio)
   });
 });
 
- // Add event listeners for "View Details" buttons after all content is injected
- document.querySelectorAll('.view-details-btn').forEach((button) => {
-   button.addEventListener('click', function (event) {
-     event.preventDefault(); // Stop the default behavior
-     const categoryIndex = button.getAttribute('data-category');
-     const subcategoryIndex = button.getAttribute('data-subcategory');
+document.querySelectorAll('.view-details-btn').forEach((button) => {
+  button.addEventListener('click', function (event) {
+    event.preventDefault();
 
-     // Retrieve category and subcategory details
-     const category = categories[categoryIndex];
-     const subcategory = category.subcategories[subcategoryIndex];
+    const categoryIndex = button.getAttribute('data-category');
+    const subcategoryIndex = button.getAttribute('data-subcategory');
 
-     // Get the selected color based on the checked radio button
-     const selectedColorValue = document.querySelector(
-       `input[name="color-${categoryIndex}-${subcategoryIndex}"]:checked`
-     )?.value; // Get the value of the selected color
+    const category = categories[categoryIndex];
+    if (!category) {
+      alert(`Category with index ${categoryIndex} not found.`);
+      return;
+    }
 
-     // Find the selected color object from the subcategory
-     const selectedColor = subcategory.colors.find(color => color.color === selectedColorValue);
+    const subcategory = category.subcategories[subcategoryIndex];
+    if (!subcategory) {
+      alert(`Subcategory with index ${subcategoryIndex} not found in category ${categoryIndex}.`);
+      return;
+    }
 
-     if (!selectedColor) {
-       alert('Selected color not found.');
-       return;
-     }
+    const selectedColorInput = document.querySelector(
+      `input[name="color-${categoryIndex}-${subcategoryIndex}"]:checked`
+    );
 
-     // Create an object to represent the selected frame
-     const selectedFrame = {
-       categoryIndex,
-       subcategoryIndex,
-       selectedColor: selectedColor.color,
-     };
+    if (!selectedColorInput) {
+      alert('Incomplete product information. Please select a color before proceeding.');
+      return;
+    }
 
-     // Retrieve existing frames from localStorage, or initialize an empty array
-     const storedFrames = JSON.parse(localStorage.getItem('frames')) || [];
+    const selectedColorValue = selectedColorInput.value;
+    const selectedColor = subcategory.colors.find(color => color.color === selectedColorValue);
+    if (!selectedColor) {
+      alert('Selected color not found.');
+      return;
+    }
 
-     // Add the new frame to the stored frames array
-     storedFrames.push(selectedFrame);
+    const selectedFrame = {
+      categoryIndex,
+      subcategoryIndex,
+      selectedColor: selectedColor.color,
+    };
 
-     // Save the updated array back to localStorage
-     localStorage.setItem('frames', JSON.stringify(storedFrames));
+    try {
+      const storedFrames = JSON.parse(localStorage.getItem('frames')) || [];
+      storedFrames.push(selectedFrame);
+      localStorage.setItem('frames', JSON.stringify(storedFrames));
+    } catch (e) {
+      alert('Error storing data in localStorage. Please try again.');
+      return;
+    }
 
-     // Redirect to the details page
-     window.location.href = `frame-details.html?category=${categoryIndex}&subcategory=${subcategoryIndex}&color=${selectedColor.color}`;
-   });
- });
+    window.location.href = `frame-details.html?category=${categoryIndex}&subcategory=${subcategoryIndex}&color=${selectedColor.color}`;
+  });
+});
 });
