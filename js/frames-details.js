@@ -9,6 +9,12 @@ const urlParams = new URLSearchParams(window.location.search);
 const categoryIndex = urlParams.get('category');
 const subcategoryIndex = urlParams.get('subcategory');
 const selectedColor = urlParams.get('color');
+// Validate URL parameters
+if (!categoryIndex || !subcategoryIndex || !selectedColor) {
+  console.error('Missing URL parameters:', { categoryIndex, subcategoryIndex, selectedColor });
+  alert('Incomplete product information. Please go back and try again.');
+  window.history.back();
+}
   const categories = [
     {
       category: 'A5.0',
@@ -485,11 +491,13 @@ const selectedColor = urlParams.get('color');
 ];
 const category = categories[categoryIndex];
       if (!category) {
+        console.error('Category not found for index:', categoryIndex);
         alert('Category not found!');
         window.location.href = 'index.html';  // Redirect to main page if category is invalid
       }
       const subcategory = category.subcategories[subcategoryIndex];
       if (!subcategory) {
+        console.error('Subcategory not found for index:', subcategoryIndex);
         alert('Subcategory not found!');
         window.location.href = 'index.html';  // Redirect to main page if subcategory is invalid
       }
