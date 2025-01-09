@@ -494,20 +494,18 @@ document.addEventListener('DOMContentLoaded', function () {
  categories.forEach((category, categoryIndex) => {
    // Generate category HTML
    const categoryHTML = `
-     <div class="category mb-4 col-lg-4 col-md-6">
-       <div class="category-card">
-       <!-- Image added here -->
-      <img src="${category.image}" alt="${category.category} image" class="category-image mb-3" />
-         <button class="frame-btn w-100 text-left category-btn" data-category="${categoryIndex}">
-           <h4 class="category-title">${category.category}</h4>
-         </button>
-         <!-- Subcategories container (Initially hidden) -->
-         <div class="subcategories collapse mt-3" id="category-${categoryIndex}">
-           <!-- Subcategories will be dynamically added here -->
-         </div>
+   <div class="col-lg-4 col-md-6 col-sm-12 category mb-4">
+     <div class="category-card">
+       <img src="${category.image}" alt="${category.category} image" class="category-image mb-3" />
+       <button class="frame-btn w-100 text-left category-btn" data-category="${categoryIndex}">
+         <h4 class="category-title">${category.category}</h4>
+       </button>
+       <div class="subcategories collapse mt-3" id="category-${categoryIndex}">
+         <!-- Subcategories will be dynamically added here -->
        </div>
      </div>
-   `;
+   </div>
+ `;
 
    // Insert category HTML
    framesContainer.insertAdjacentHTML('beforeend', categoryHTML);
