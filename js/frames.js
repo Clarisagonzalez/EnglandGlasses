@@ -488,7 +488,6 @@ document.addEventListener('DOMContentLoaded', function () {
  // Select container for frames
  const framesContainer = document.querySelector('.frames-container');
  if (!framesContainer) {
-     console.error('Frames container not found in the DOM!');
      return;
  }
 

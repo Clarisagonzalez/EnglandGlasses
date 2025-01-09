@@ -29,7 +29,6 @@ document.addEventListener('DOMContentLoaded', function () {
       listItem.innerHTML = `
           <div>
               <h6 class="my-0">${item.title}</h6>
-              <small class="text-muted">Color: ${item.color}</small><br>
               <small class="text-muted">Price: $${item.price}</small>
           </div>
           <span class="text-muted">$${item.price}</span>
