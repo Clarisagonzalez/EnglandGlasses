@@ -505,19 +505,20 @@ document.addEventListener('DOMContentLoaded', function () {
       
       
 
-      function viewDetails(title) {
-        const selectedItem = categories
-          .flatMap((cat) => cat.subcategories)
-          .find((subcat) => subcat.title === title);
-      
-        if (selectedItem) {
-          // Navigate to the frame-details page with the title as a query parameter
-          window.location.href = `frame-details.html?title=${encodeURIComponent(title)}`;
-        } else {
-          alert('Item not found.');
-        }
-      }
-      
+   // Define viewDetails globally
+window.viewDetails = function(title) {
+  const selectedItem = categories
+    .flatMap((cat) => cat.subcategories)
+    .find((subcat) => subcat.title === title);
+
+  if (selectedItem) {
+    // Redirect to the details page with the title as a query parameter
+    window.location.href = `frame-details.html?title=${encodeURIComponent(title)}`;
+  } else {
+    alert('Frame details not found.');
+  }
+};
+
 
   // Populate tabs
   renderFrames('#all', categories.flatMap((cat) => cat.subcategories).sort((a, b) => a.title.localeCompare(b.title)));
