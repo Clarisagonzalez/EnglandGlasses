@@ -4,195 +4,74 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Frames - EnglandGlasses</title>
+  <title>Frames - England Glasses</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
   <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
 
   <style>
-    body {
-      font-family: 'Poppins', sans-serif;
-      margin: 0;
-      flex-direction: column;
-      min-height: 100vh;
-    }
-    .main-content {
-    flex: 1; /* Ensure the main content area is at least as tall as the viewport */
-  background-color: #f4f4f4;
+   .tab-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
 }
 
-    .text-center {
-      text-align: center;
-    }
-
-    .frames-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-    align-items: stretch;
+.card {
+  width: 300px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.2s ease-in-out;
+  background-color: #fff;
 }
 
-.frames-container .category {
-    flex: 1 1 280px; /* Minimum width for each card */
-    max-width: 320px; /* Caps the width for larger screens */
-    background-color: #fff;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s ease-in-out;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between; /* Ensures consistent spacing */
-    height: 260px; /* Set uniform height for all cards */
-}
-  
-.frames-container .category:hover {
-    transform: translateY(-5px); /* Subtle hover effect */
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+.card:hover {
+  transform: scale(1.05);
 }
 
-    .category-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between; /* Distributes content evenly */
-    height: 70%;
-    padding: 15px; /* Adds spacing inside the card */
+.card img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
 }
 
-.category-btn {
-    background-color: #3c3f99;
-    color: #fff;
-    font-size: 14px;
-    font-weight: bold;
-    text-align: center;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin: 0 20px 20px; /* Adds margin for spacing */
-    transition: background-color 0.3s ease-in-out;
-    align-self: center; /* Centers the button horizontally */
-    width: calc(100% - 40px); /* Ensures consistent width */
+.card-body {
+  padding: 15px;
+  text-align: center;
 }
 
-.category-btn:hover {
-    background-color: #5a61d1;
+.card-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+  margin: 10px 0;
 }
 
-.category-btn:focus {
-    outline: none;
-    box-shadow: none;
+.card-text {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 15px;
 }
 
-.category-image {
-    width: 100%; /* Ensures the image fills the card width */
-    height: 200px; /* Set height for uniformity */
-    object-fit: cover; /* Ensures the image scales proportionally */
-    border-radius: 10px 10px 0 0; /* Rounded corners for top of card */
+.btn-primary {
+  background-color: #0046be;
+  border: none;
+  width: 80%;
+  margin: 0 auto;
 }
 
-.category-title {
-    font-size: 16px;
-    color: white;
-    text-align: center;
-    padding: 10px 0;
-}
-
-    .subcategories {
-      display: none;
-      padding: 10px;
-      background-color: #f8f8f8;
-      border-top: 1px solid #ddd;
-    }
-
-    .subcategories.show {
-      display: block;
-    }
-
-    .subcategories .card {
-      margin-bottom: 15px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      border-radius: 10px;
-      overflow: hidden;
-    }
-
-    .subcategories .card img {
-      width: 100%;
-      height: auto;
-    }
-
-    .subcategories .card-body {
-      padding: 10px;
-      text-align: center;
-    }
-
-    .subcategories .card-title {
-      font-size: 16px;
-      font-weight: bold;
-    }
-
-    .subcategories .card-text {
-      font-size: 14px;
-      color: #555;
-    }
-
-    .subcategories .btn {
-      background-color: #343a40;
-      color: white;
-      border-radius: 5px;
-      padding: 10px 20px;
-      font-size: 14px;
-      text-decoration: none;
-    }
-
-    .subcategories .btn:hover {
-      background-color: #495057;
-    }
-
-    @media (max-width: 480px) {
-  html, body {
-    height: 100%; /* Full height */
-    margin: 0;
-    overflow-y: auto; /* Allow scrolling */
-  }
-
-  @media (max-width: 992px) {
-    .frames-container .category {
-        flex: 1 1 calc(50% - 20px); /* 2 items per row */
-        max-width: calc(50% - 20px);
-    }
-}
-
-@media (max-width: 576px) {
-    .frames-container .category {
-        flex: 1 1 100%; /* 1 item per row */
-        max-width: 100%;
-    }
-}
-
-  .main-content {
-    min-height: 140vh; /* Even taller content on very small screens */
-    padding: 10px;
-  }
-
-  .section {
-    height: 140vh; /* Make the section taller on very small screens */
-    background-color: #ddd;
-  }
-
-  .footer {
-    margin-top: auto;
-    height: 70px; /* Increase footer height further */
-  }
+.btn-primary:hover {
+  background-color: #003a9e;
 }
   </style>
 </head>
 
 <body>
+  <!-- Navbar -->
   <header>
     <div class="header-container">
       <div class="logo">
@@ -209,28 +88,42 @@
     </div>
   </header>
 
+  <!-- Main Content -->
   <div class="main-content">
-    <div class="container py-5">
+    <div class="container">
       <h3 class="text-center mb-4">Frames Selection</h3>
-      <div class="frames-container row">
-        <!-- Dynamic content for categories and subcategories will be inserted here by frames.js -->
+      <ul class="nav nav-tabs" id="framesTabs" role="tablist">
+        <li class="nav-item">
+          <button class="nav-link active" id="all-tab" data-bs-toggle="tab" data-bs-target="#all" type="button" role="tab">All Eyeglasses</button>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link" id="a5-tab" data-bs-toggle="tab" data-bs-target="#a5" type="button" role="tab">A5.0</button>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link" id="academic-tab" data-bs-toggle="tab" data-bs-target="#academic" type="button" role="tab">Academic</button>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link" id="ceo-tab" data-bs-toggle="tab" data-bs-target="#ceo" type="button" role="tab">CEO</button>
+        </li>
+      </ul>
+      <div class="tab-content" id="framesTabsContent">
+        <div class="tab-pane fade show active" id="all" role="tabpanel"></div>
+        <div class="tab-pane fade" id="a5" role="tabpanel"></div>
+        <div class="tab-pane fade" id="academic" role="tabpanel"></div>
+        <div class="tab-pane fade" id="ceo" role="tabpanel"></div>
       </div>
     </div>
   </div>
 
+  <!-- Footer -->
   <footer class="text-center py-4" id="contact" style="background-color: #333; color: #fff;">
     <p>&copy; 2024 England Glasses | All Rights Reserved</p>
-    <p>
-      <a href="contact.html" class="text-light">Contact Us</a>
-    </p>
+    <p><a href="contact.html" class="text-light">Contact Us</a></p>
   </footer>
 
-  <!-- Bootstrap JS and Dependencies -->
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-  <!-- Link External JavaScript -->
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Custom JS -->
   <script src="js/frames.js"></script>
 </body>
 
