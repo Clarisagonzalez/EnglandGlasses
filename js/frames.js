@@ -481,13 +481,25 @@ document.addEventListener('DOMContentLoaded', function () {
             },
           ],
         },
-      ];
-      function renderFrames(containerId, items) {
+      ];function renderFrames(containerId, items) {
         const container = document.querySelector(containerId);
         if (!container) return;
         container.innerHTML = ''; // Clear the container
       
         items.forEach((item) => {
+          // Create radio buttons dynamically for available colors
+          const colorOptions = item.colors
+            .map(
+              (colorOption, index) =>
+                `<label style="margin-right: 10px;">
+                   <input type="radio" name="color-${item.title}" value="${colorOption.color}" ${
+                  index === 0 ? 'checked' : ''
+                } />
+                   ${colorOption.color}
+                 </label>`
+            )
+            .join('');
+      
           const cardHTML = `
             <div class="card">
               <img src="${item.image}" alt="${item.title}" />
@@ -495,6 +507,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 <h5 class="card-title">${item.title}</h5>
                 <p class="card-text">${item.description}</p>
                 <p class="card-text"><strong>${item.price}</strong></p>
+                <div class="color-options">
+                  <p><strong>Available Colors:</strong></p>
+                  ${colorOptions}
+                </div>
                 <button class="btn btn-primary" onclick="viewDetails('${item.title}')">View Details</button>
               </div>
             </div>
@@ -502,6 +518,7 @@ document.addEventListener('DOMContentLoaded', function () {
           container.insertAdjacentHTML('beforeend', cardHTML);
         });
       }
+      
       
       
 
