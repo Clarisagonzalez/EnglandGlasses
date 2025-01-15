@@ -1,19 +1,16 @@
 const express = require('express');
-const cors = require('cors');
-const path = require('path'); // Required for resolving paths
+const path = require('path'); // For resolving paths
 
 const app = express();
 
-// Use CORS middleware
-app.use(cors());
+// Serve static files from the public directory
+app.use(express.static(path.join(__dirname, 'public')));
 
-// Serve static assets directly from the root directory
-app.use(express.static(__dirname)); // __dirname points to the current directory
-
-// Example endpoint
-app.get('/api/data', (req, res) => {
-    res.json({ message: 'Hello from backend!' });
+// Fallback route for undefined paths (optional)
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
+// Start the server
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.listen(PORT, () => console.log(`Server running at http://localhost:${PORT}`));
