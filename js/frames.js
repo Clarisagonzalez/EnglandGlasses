@@ -481,13 +481,14 @@ document.addEventListener('DOMContentLoaded', function () {
             },
           ],
         },
-      ];function renderFrames(containerId, items) {
+      ];
+      function renderFrames(containerId, items) {
         const container = document.querySelector(containerId);
         if (!container) return;
         container.innerHTML = ''; // Clear the container
       
         items.forEach((item) => {
-          // Create radio buttons dynamically for available colors
+          // Generate radio buttons dynamically for available colors
           const colorOptions = item.colors
             .map(
               (colorOption, index) =>
@@ -500,6 +501,7 @@ document.addEventListener('DOMContentLoaded', function () {
             )
             .join('');
       
+          // Generate the card HTML
           const cardHTML = `
             <div class="card">
               <img src="${item.image}" alt="${item.title}" />
@@ -518,8 +520,6 @@ document.addEventListener('DOMContentLoaded', function () {
           container.insertAdjacentHTML('beforeend', cardHTML);
         });
       }
-      
-      
       
 
    // Define viewDetails globally
