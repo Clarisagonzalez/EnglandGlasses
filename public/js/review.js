@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (!productTitle || !subcategoryPrice || !productImageURL) {
         alert("Incomplete product information. Please go back and try again.");
-        window.location.href = "frames.html";
+        window.location.href = "/frames.html";
         return;
     }
 
@@ -80,7 +80,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 notification.remove();
                 const goToCart = confirm("Do you want to view your cart?");
                 if (goToCart) {
-                    window.location.href = "cart.html";
+                    window.location.href = "/cart.html";
                 }
             }, 2000);
         });
