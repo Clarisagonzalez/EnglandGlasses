@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
           title: 'A5.0',
           price: '$120',
           description: "Lightweight and durable TR-90 frame in Black or Burnt Orange. Unisex design with 54-17-142 dimensions, offering a sleek look from the A5.0+ line.",
-          image: [
+          colors: [
             { color: 'Black', src: '/images/glasses/A5.0/A5.0 Black.jpg' },
             { color: 'Burnt Orange', src: '/images/glasses/A5.0/A5.0 Burnt Orange.jpg' },
           ],
@@ -482,8 +482,7 @@ document.addEventListener('DOMContentLoaded', function () {
           ],
         },
       ];
-      document.addEventListener('DOMContentLoaded', function () {
-        function renderFrames(containerId, items) {
+      function renderFrames(containerId, items) {
             const container = document.querySelector(containerId);
             if (!container) return;
             container.innerHTML = ''; // Clear container
@@ -493,7 +492,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     .map(
                         (colorOption, index) => `
                             <label style="margin-right: 10px;">
-                                <input type="radio" name="color-${item.title}" value="${colorOption.src}" ${index === 0 ? 'checked' : ''} />
+                                <input type="radio" name="color-${item.title}" value="${colorOption.src}" data-color="${colorOption.color}" ${index === 0 ? 'checked' : ''} />
                                 ${colorOption.color}
                             </label>`
                     )
@@ -510,7 +509,12 @@ document.addEventListener('DOMContentLoaded', function () {
                                 <p><strong>Available Colors:</strong></p>
                                 ${colorOptions}
                             </div>
-                            <button class="btn btn-primary" onclick="viewDetails('${item.title}')">View Details</button>
+                            <button class="btn btn-primary view-details" 
+                            data-title="${item.title}" 
+                            data-price="${item.price}" 
+                            data-image="${item.colors[0].src}">
+                            View Details
+                        </button>
                         </div>
                     </div>
                 `;
@@ -521,11 +525,27 @@ document.addEventListener('DOMContentLoaded', function () {
             // Attach event listeners to update image when radio buttons are clicked
             document.querySelectorAll("input[type='radio']").forEach((radio) => {
                 radio.addEventListener("change", function () {
-                    const imgId = this.name.replace("color-", "image-");
+                    let imgId = this.name.replace("color-", "image-");
                     document.getElementById(imgId).src = this.value;
+                    // Update View Details button data to reflect selected color
+                    let viewDetailsButton = document.querySelector(`button[data-title="${this.name.replace('color-', '')}"]`);
+                    if (viewDetailsButton) {
+                        viewDetailsButton.setAttribute("data-image", this.value);
+                    }
                 });
             });
-        }
+            
+             // Attach event listeners to View Details buttons
+        document.querySelectorAll(".view-details").forEach((button) => {
+          button.addEventListener("click", function () {
+              let frameTitle = this.dataset.title;
+              let framePrice = this.dataset.price;
+              let frameImage = this.dataset.image;
+
+              window.location.href = `/frame-details.html?title=${encodeURIComponent(frameTitle)}&price=${encodeURIComponent(framePrice)}&image=${encodeURIComponent(frameImage)}`;
+          });
+      });
+  }
     
         // Populate tabs
         renderFrames('#all', categories.flatMap((cat) => cat.subcategories).sort((a, b) => a.title.localeCompare(b.title)));
