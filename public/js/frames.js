@@ -482,73 +482,72 @@ document.addEventListener('DOMContentLoaded', function () {
           ],
         },
       ];
-        function renderFrames(containerId, items) {
-            const container = document.querySelector(containerId);
-            if (!container) return;
-            container.innerHTML = ''; // Clear existing content
-    
-            items.forEach((item) => {
-                const colorOptions = item.colors
-                    .map(
-                        (colorOption, index) => `
-                            <label style="margin-right: 10px;">
-                                <input type="radio" name="color-${item.title}" value="${colorOption.src}" data-color="${colorOption.color}" ${index === 0 ? 'checked' : ''} />
-                                ${colorOption.color}
-                            </label>`
-                    )
-                    .join('');
-    
-                const cardHTML = `
-                    <div class="card">
-                        <img id="image-${item.title}" src="${item.colors[0].src}" alt="${item.title}" />
-                        <div class="card-body">
-                            <h5 class="card-title">${item.title}</h5>
-                            <p class="card-text">${item.description}</p>
-                            <p class="card-text"><strong>${item.price}</strong></p>
-                            <div class="color-options">
-                                <p><strong>Available Colors:</strong></p>
-                                ${colorOptions}
-                            </div>
-                            <button class="btn btn-primary view-details" 
-                                data-title="${item.title}" 
-                                data-price="${item.price}" 
-                                data-image="${item.colors[0].src}">
-                                View Details
-                            </button>
+      function renderFrames(containerId, items) {
+        const container = document.querySelector(containerId);
+        if (!container) return;
+        container.innerHTML = ''; // Clear existing content
+
+        items.forEach((item) => {
+            const colorOptions = item.colors
+                .map(
+                    (colorOption, index) => `
+                        <label style="margin-right: 10px;">
+                            <input type="radio" name="color-${item.title}" value="${colorOption.src}" data-color="${colorOption.color}" ${index === 0 ? 'checked' : ''} />
+                            ${colorOption.color}
+                        </label>`
+                )
+                .join('');
+
+            const cardHTML = `
+                <div class="card">
+                    <img id="image-${item.title}" src="${item.colors[0].src}" alt="${item.title}" />
+                    <div class="card-body">
+                        <h5 class="card-title">${item.title}</h5>
+                        <p class="card-text">${item.description}</p>
+                        <p class="card-text"><strong>${item.price}</strong></p>
+                        <div class="color-options">
+                            <p><strong>Available Colors:</strong></p>
+                            ${colorOptions}
                         </div>
+                        <button class="btn btn-primary view-details" 
+                            data-title="${item.title}" 
+                            data-price="${item.price}" 
+                            data-image="${item.colors[0].src}">
+                            View Details
+                        </button>
                     </div>
-                `;
-    
-                container.insertAdjacentHTML('beforeend', cardHTML);
+                </div>
+            `;
+
+            container.insertAdjacentHTML('beforeend', cardHTML);
+        });
+
+        // Attach event listeners AFTER rendering to ensure they apply to all tabs
+        attachColorChangeListeners();
+    }
+
+    // Function to attach event listeners for radio buttons (runs after rendering)
+    function attachColorChangeListeners() {
+        document.querySelectorAll("input[type='radio']").forEach((radio) => {
+            radio.addEventListener("change", function () {
+                let imgId = this.name.replace("color-", "image-");
+                let frameImage = document.getElementById(imgId);
+                if (frameImage) {
+                    frameImage.src = this.value;
+                }
+
+                // Update View Details button image if necessary
+                let viewDetailsButton = document.querySelector(`button[data-title="${this.name.replace('color-', '')}"]`);
+                if (viewDetailsButton) {
+                    viewDetailsButton.setAttribute("data-image", this.value);
+                }
             });
-    
-            // Attach event listeners AFTER rendering to ensure they apply to all tabs
-            attachColorChangeListeners();
-        }
-    
-        // Function to attach event listeners for radio buttons (runs after rendering)
-        function attachColorChangeListeners() {
-            document.querySelectorAll("input[type='radio']").forEach((radio) => {
-                radio.addEventListener("change", function () {
-                    let imgId = this.name.replace("color-", "image-");
-                    let frameImage = document.getElementById(imgId);
-                    if (frameImage) {
-                        frameImage.src = this.value;
-                    }
-    
-                    // Update View Details button image if necessary
-                    let viewDetailsButton = document.querySelector(`button[data-title="${this.name.replace('color-', '')}"]`);
-                    if (viewDetailsButton) {
-                        viewDetailsButton.setAttribute("data-image", this.value);
-                    }
-                });
-            });
-        }
-    
-        // Populate tabs (ensuring all tabs are updated)
-        renderFrames('#all', categories.flatMap((cat) => cat.subcategories).sort((a, b) => a.title.localeCompare(b.title)));
-        renderFrames('#a5', categories.find((cat) => cat.category === 'A5.0')?.subcategories || []);
-        renderFrames('#academic', categories.find((cat) => cat.category === 'Academic')?.subcategories || []);
-        renderFrames('#ceo', categories.find((cat) => cat.category === 'CEO')?.subcategories || []);
-    });
-    
+        });
+    }
+
+    // Populate tabs (ensuring all tabs are updated)
+    renderFrames('#all', categories.flatMap((cat) => cat.subcategories).sort((a, b) => a.title.localeCompare(b.title)));
+    renderFrames('#a5', categories.find((cat) => cat.category === 'A5.0')?.subcategories || []);
+    renderFrames('#academic', categories.find((cat) => cat.category === 'Academic')?.subcategories || []);
+    renderFrames('#ceo', categories.find((cat) => cat.category === 'CEO')?.subcategories || []);
+});
