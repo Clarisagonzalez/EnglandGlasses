@@ -492,7 +492,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 .map(
                     (colorOption, index) => `
                         <label style="margin-right: 10px;">
-                            <input type="radio" name="color-${item.title}" value="${colorOption.src}" data-color="${colorOption.color}" ${index === 0 ? 'checked' : ''} />
+                            <input type="radio" name="color-${containerId}-${item.title}" 
+                                value="${colorOption.src}" 
+                                data-color="${colorOption.color}" 
+                                ${index === 0 ? 'checked' : ''} />
                             ${colorOption.color}
                         </label>`
                 )
@@ -500,7 +503,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             const cardHTML = `
                 <div class="card">
-                    <img id="image-${item.title}" src="${item.colors[0].src}" alt="${item.title}" />
+                    <img id="image-${containerId}-${item.title}" src="${item.colors[0].src}" alt="${item.title}" />
                     <div class="card-body">
                         <h5 class="card-title">${item.title}</h5>
                         <p class="card-text">${item.description}</p>
@@ -522,11 +525,10 @@ document.addEventListener('DOMContentLoaded', function () {
             container.insertAdjacentHTML('beforeend', cardHTML);
         });
 
-        // Attach event listeners AFTER rendering to ensure they apply to all tabs
-        attachColorChangeListeners();
+        // Attach event listeners AFTER rendering
+        attachColorChangeListeners(containerId);
     }
 
-    // Function to attach event listeners for radio buttons (runs after rendering)
     function attachColorChangeListeners() {
         document.querySelectorAll("input[type='radio']").forEach((radio) => {
             radio.addEventListener("change", function () {
@@ -535,19 +537,21 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (frameImage) {
                     frameImage.src = this.value;
                 }
-
-                // Update View Details button image if necessary
-                let viewDetailsButton = document.querySelector(`button[data-title="${this.name.replace('color-', '')}"]`);
-                if (viewDetailsButton) {
-                    viewDetailsButton.setAttribute("data-image", this.value);
-                }
             });
         });
     }
 
-    // Populate tabs (ensuring all tabs are updated)
+    // Populate frames for all tabs
     renderFrames('#all', categories.flatMap((cat) => cat.subcategories).sort((a, b) => a.title.localeCompare(b.title)));
     renderFrames('#a5', categories.find((cat) => cat.category === 'A5.0')?.subcategories || []);
     renderFrames('#academic', categories.find((cat) => cat.category === 'Academic')?.subcategories || []);
     renderFrames('#ceo', categories.find((cat) => cat.category === 'CEO')?.subcategories || []);
+
+    // ✅ ADD THIS CODE HERE: Reattach event listeners when switching tabs
+    document.querySelectorAll(".tab-link").forEach((tab) => {
+        tab.addEventListener("click", function () {
+            setTimeout(() => attachColorChangeListeners(), 100); // Wait for the tab to show before attaching
+        });
+    });
+
 });
