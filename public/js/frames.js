@@ -488,6 +488,7 @@ document.addEventListener('DOMContentLoaded', function () {
         container.innerHTML = ''; // Clear existing content
 
         items.forEach((item) => {
+            const uniqueId = `${containerId}-${item.title.replace(/\s+/g, '-')}`; // Unique identifier per tab
             const colorOptions = item.colors
                 .map(
                     (colorOption, index) => `
@@ -527,6 +528,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Attach event listeners AFTER rendering
         attachColorChangeListeners(containerId);
+        attachViewDetailsListeners();
     }
 
     function attachColorChangeListeners() {
@@ -540,6 +542,40 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         });
     }
+    function attachViewDetailsListeners() {
+      document.querySelectorAll(".view-details").forEach((button) => {
+          button.addEventListener("click", function () {
+              const title = this.getAttribute("data-title");
+              const price = this.getAttribute("data-price");
+              const image = this.getAttribute("data-image");
+  
+              const selectedColorInput = this.closest(".card-body")
+                  .querySelector("input[type='radio']:checked");
+  
+              const color = selectedColorInput ? selectedColorInput.dataset.color : "Default";
+  
+              // Find category and subcategory index
+              let categoryIndex = 0;
+              let subcategoryIndex = 0;
+              outerLoop: for (let i = 0; i < categories.length; i++) {
+                  for (let j = 0; j < categories[i].subcategories.length; j++) {
+                      if (categories[i].subcategories[j].title === title) {
+                          categoryIndex = i;
+                          subcategoryIndex = j;
+                          break outerLoop;
+                      }
+                  }
+              }
+  
+              // 🔹 Fix: Pass all required parameters in the URL
+              const url = `frame-details.html?title=${encodeURIComponent(title)}&price=${encodeURIComponent(price)}&image=${encodeURIComponent(image)}&color=${encodeURIComponent(color)}`;
+              window.location.href = url;
+          });
+      });
+  }
+  
+
+    
 
     // Populate frames for all tabs
     renderFrames('#all', categories.flatMap((cat) => cat.subcategories).sort((a, b) => a.title.localeCompare(b.title)));

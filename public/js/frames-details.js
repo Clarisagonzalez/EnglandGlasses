@@ -1,63 +1,83 @@
-// Wait for the DOM to fully load before executing script
-document.addEventListener("DOMContentLoaded", function () {
-  // Retrieve URL parameters
-  const urlParams = new URLSearchParams(window.location.search);
-  const frameTitle = urlParams.get("title");
-  const framePrice = urlParams.get("price");
-  const frameImage = urlParams.get("image");
-  const frameColor = urlParams.get("color");
+// ✅ Retrieve URL parameters
+const urlParams = new URLSearchParams(window.location.search);
+const title = urlParams.get("title");
+const price = urlParams.get("price");
+const image = urlParams.get("image");
+const color = urlParams.get("color");
 
-  // Handle missing data
-  if (!frameTitle || !framePrice || !frameImage) {
-      alert("Incomplete product information. Redirecting to shop.");
-      window.location.href = "/frames.html";
-      return;
-  }
+// ✅ Debugging: Check if parameters are being retrieved correctly
+console.log("Title:", title);
+console.log("Price:", price);
+console.log("Image:", image);
+console.log("Color:", color);
 
-  // Display frame details on the page
-  document.querySelector("#frame-title").textContent = frameTitle;
-  document.querySelector("#frame-price").textContent = framePrice;
-  document.querySelector("#frame-image").src = frameImage;
-  document.querySelector("#frame-color").textContent = frameColor || "Default Color";
-});
-
-// Function to save prescription and product details
-function savePrescription(event) {
-  event.preventDefault(); // Prevent default form submission behavior
-
-  // Capture prescription values from form inputs
-  const prescription = {
-      sphOd: document.getElementById("sph-od")?.value || null,
-      cylOd: document.getElementById("cyl-od")?.value || null,
-      axisOd: document.getElementById("axis-od")?.value || null,
-      pdOd: document.getElementById("pd-od")?.value || null,
-      sphOs: document.getElementById("sph-os")?.value || null,
-      cylOs: document.getElementById("cyl-os")?.value || null,
-      axisOs: document.getElementById("axis-os")?.value || null,
-      pdOs: document.getElementById("pd-os")?.value || null,
-  };
-
-  // Retrieve frame details from the displayed content
-  const frameDetails = {
-      title: document.querySelector("#frame-title").textContent,
-      price: document.querySelector("#frame-price").textContent,
-      image: document.querySelector("#frame-image").src,
-      color: document.querySelector("#frame-color").textContent
-  };
-
-  // Save prescription and frame details to localStorage
-  localStorage.setItem("prescription", JSON.stringify(prescription));
-  localStorage.setItem("productImage", frameDetails.image);
-  localStorage.setItem("subcategoryTitle", frameDetails.title);
-  localStorage.setItem("subcategoryPrice", frameDetails.price);
-  localStorage.setItem("selectedColor", frameDetails.color);
-
-  console.log("Prescription saved:", prescription);
-  console.log("Frame details saved:", frameDetails);
-
-  // Redirect to the review page after saving data
-  window.location.href = "/review.html";
+// ✅ Ensure all required parameters exist
+if (!title?.trim() || !price?.trim() || !image?.trim() || !color?.trim()) {
+    console.error("Missing product details!");
+    console.error("Title:", title);
+    console.error("Price:", price);
+    console.error("Image:", image);
+    console.error("Color:", color);
+    alert("Incomplete product information. Please go back and try again.");
+    return;
 }
 
-// Attach event listener to the form submit button
-document.getElementById("prescriptionForm").addEventListener("submit", savePrescription);
+// ✅ Update the product display on `frame-details.html`
+document.addEventListener("DOMContentLoaded", function () {
+    const titleElement = document.querySelector("#frame-title");
+    const descriptionElement = document.querySelector("#frame-description");
+    const imageElement = document.querySelector("#frame-image");
+    const priceElement = document.querySelector("#frame-price");
+    const colorElement = document.querySelector("#frame-color");
+
+    // ✅ Check if elements exist before updating them
+    if (!titleElement || !descriptionElement || !imageElement || !priceElement || !colorElement) {
+        console.error("One or more elements are missing from the page!");
+        return;
+    }
+
+    // ✅ Assign values only if they exist
+    titleElement.innerText = title || "Unknown Title";
+    descriptionElement.innerText = `Color: ${color || "Unknown"}`;
+    imageElement.src = image || "/images/default.jpg";  // Fallback image if missing
+    priceElement.innerText = price || "N/A";
+    colorElement.innerText = color || "Unknown";
+});
+
+// ✅ Function to save prescription and product details to local storage
+function savePrescription(event) {
+    event.preventDefault();
+
+    // Capture prescription values
+    const prescription = {
+        sphOd: document.getElementById("sph-od")?.value || null,
+        cylOd: document.getElementById("cyl-od")?.value || null,
+        axisOd: document.getElementById("axis-od")?.value || null,
+        pdOd: document.getElementById("pd-od")?.value || null,
+        sphOs: document.getElementById("sph-os")?.value || null,
+        cylOs: document.getElementById("cyl-os")?.value || null,
+        axisOs: document.getElementById("axis-os")?.value || null,
+        pdOs: document.getElementById("pd-os")?.value || null,
+    };
+
+    // ✅ Store product details in local storage for the cart
+    localStorage.setItem("prescription", JSON.stringify(prescription));
+    localStorage.setItem("productTitle", title);
+    localStorage.setItem("productImage", image);
+    localStorage.setItem("productPrice", price);
+    localStorage.setItem("selectedColor", color);
+
+    console.log("Prescription saved:", prescription);
+    console.log("Product details saved:", { title, price, image, color });
+
+    // ✅ Redirect to review page
+    window.location.href = "/review.html";
+}
+
+// ✅ Attach event listener to the prescription form's submit button
+document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("prescriptionForm");
+    if (form) {
+        form.addEventListener("submit", savePrescription);
+    }
+});
